@@ -9,4 +9,5 @@ _site
 .bundle
 vendor
 **/__pycache__/**
+**/.vscode/**
 **/*.egg-info/**
