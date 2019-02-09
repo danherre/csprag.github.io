@@ -21,11 +21,19 @@ In order to build the site locally on your computer, there are a number of depen
 Make sure you're in a python 3.7 virtual environment, then run the following in your terminal:
 
 ```bash
-pip install Flask Frozen-Flask mistune pygments
 export FLASK_APP=reference
 export FLASK_ENV=development
+python setup.py develop
 flask run
 ```
+
+Alternatively, just run the setup script provided.
+
+```bash
+chmod +x run.sh
+run.sh
+```
+
 For more information on setting up, see [GitHub's guide][gh docs] or [Flask's documentation][flask docs].
 
 After making a change and verifying that it works, please submit a [pull request][].
