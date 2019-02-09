@@ -1,10 +1,14 @@
 from flask import Flask, Markup
+from flask_frozen import Freezer
 import mistune
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import html
 
 app = Flask(__name__)
+app.config.from_pyfile('settings.py')
+freezer = Freezer(app)
+
 
 class HighlightRenderer(mistune.Renderer):
     def block_code(self, code, lang):
@@ -16,12 +20,12 @@ class HighlightRenderer(mistune.Renderer):
 
 mistune_markdown = mistune.Markdown(renderer=HighlightRenderer())
 
+
 @app.template_filter('markdown')
 def markdown(text, **options):
     return Markup(mistune_markdown(text, **options))
 
-# All views must be imported after app creation
-import reference.main
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+# All views must be imported after app creation
+# TODO: Find a way to avoid circular imports
+import reference.views

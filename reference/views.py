@@ -1,10 +1,7 @@
-from flask import Flask, render_template
-from flask_frozen import Freezer
+from flask import Flask, Markup, render_template
 from os import listdir, path, walk
+from reference import app
 import re
-app = Flask(__name__)
-app.config.from_pyfile('settings.py')
-freezer = Freezer(app)
 
 
 @app.route('/')
