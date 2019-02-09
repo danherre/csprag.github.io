@@ -1,4 +1,4 @@
-from reference import main
+from reference import freezer
 
 if __name__ == '__main__':
-    main.freezer.freeze()
+    freezer.freeze()
