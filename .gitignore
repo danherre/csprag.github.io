@@ -11,3 +11,5 @@ vendor
 **/__pycache__/**
 **/.vscode/**
 **/*.egg-info/**
+/*.html
+/static/**
