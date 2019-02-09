@@ -14,19 +14,19 @@ The site itself uses [GitHub Pages][], [Flask][], and [Frozen-Flask][].
 Before contributing, please check [open issues][] and create a [new issue][] if a one for your proposed contribution does not exist.
 
 Content for the website is written in [Markdown][].
-To contribute to the [reference page][], navigate to `static/commands` and then to the specific section and edit an existing `.md` file or create a new one.
-For example, to edit the `cd` reference, edit `static/commands/basics/cd.md`.
+To contribute to the [reference page][], navigate to `reference/static/commands` and then to the specific section and edit an existing `.md` file or create a new one.
+For example, to edit the `cd` reference, edit `reference/static/commands/basics/cd.md`.
 
-In order to build the site locally on your __Ubuntu__ computer, there are a
-number of dependencies to resolve first:
+In order to build the site locally on your computer, there are a number of dependencies to resolve first.
+Make sure you're in a python 3.7 virtual environment, then run the following in your terminal:
 
-```python
+```bash
 pip install Flask Frozen-Flask mistune pygments
+export FLASK_APP=reference
+export FLASK_ENV=development
+flask run
 ```
-
-This will mount your current directory to the running image, so any changes you make will be reflected by jekyll just like they would if you build and ran the site locally.
-
-For more information on setting up, see [GitHub's guide][gh docs] or [Jekyll's documentation][jekyll docs].
+For more information on setting up, see [GitHub's guide][gh docs] or [Flask's documentation][flask docs].
 
 After making a change and verifying that it works, please submit a [pull request][].
 
@@ -42,9 +42,6 @@ After making a change and verifying that it works, please submit a [pull request
 [new issue]: https://github.com/c4cs/c4cs.github.io/issues/new
 [Markdown]: http://daringfireball.net/projects/markdown/
 [reference page]: https://csprag.github.io/reference
-[ruby]: https://www.ruby-lang.org/en/
-[bundler]: https://bundler.io/
 [gh docs]:https://help.github.com/articles/using-jekyll-with-pages/
-[jekyll docs]: https://jekyllrb.com/docs/home/
-[pull request]: https://github.com/c4cs/c4cs.github.io/pulls
-[Homebrew]: https://c4cs.github.io/commands/brew
+[flask docs]: http://flask.pocoo.org/docs/1.0/
+[pull request]: https://github.com/csprag/csprag.github.io/pulls
