@@ -5,6 +5,7 @@ install:
   python setup.py develop
 script:
   python freeze.py
+  ls static
 deploy:
   provider: pages
   skip-cleanup: true
