@@ -1,0 +1,14 @@
+dist: xenial
+language: python
+python: "3.7"
+install:
+  python setup.py develop
+script:
+  python freeze.py
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
