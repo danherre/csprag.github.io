@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - sftp</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>sftp</h2>
+<p><code>sftp</code> is used to securely transfer files between a local machine and a remote machine that is accessed via SSH. SFTP stands for Secure File Transfer Protocol.</p>
+<div class="highlight"><pre><span></span>$ sftp user@hostname
+Password: *********
+Connected to hostname.
+sftp&gt; put filename.txt
+sftp&gt; mput file1.txt file2.txt file3.txt
+sftp&gt; get file.txt
+sftp&gt; mget file1.txt file2.txt file3.txt
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>sftp user@hostname</code></h4>
+<div class="highlight"><pre><span></span>$ sftp &lt;username&gt;@login.engin.umich.edu
+Password: **********
+Connected to login.engin.umich.edu.
+sftp&gt;
+</pre></div>
+<p>This is how you begin the sftp process. It is done the same way as when you SSH into a machine, except you use the sftp command instead of the ssh command. You must have access to the machine and provide a password. You can try this by remote accessing CAEN with your uniqname@login.engin.umich.edu and providing your kerberos password as the password.</p>
+<h4><code>sftp&gt; ls</code></h4>
+<div class="highlight"><pre><span></span>sftp&gt; ls
+remoteDirectory1
+remoteFile1.txt
+sftp&gt; lls
+localDirectory1
+localFile1.txt
+</pre></div>
+<p>Use the <code>ls</code> command to print the contents of the current directory on the remote machine. Use the <code>lls</code> command to print the contents of the current directory on your local machine.</p>
+<h4><code>sftp&gt; cd directory</code></h4>
+<div class="highlight"><pre><span></span>sftp&gt; <span class="nb">cd</span> remoteDirectory1
+sftp&gt; lcd localDirectory1
+</pre></div>
+<p>Use the <code>cd</code> command to change your current directory on the remote machine. Use the <code>lcd</code> command to change your current directory on your local machine.</p>
+<h4><code>sftp&gt; put filename</code></h4>
+<div class="highlight"><pre><span></span>sftp&gt; put localFile1.txt
+</pre></div>
+<p>Upload a single file from your local machine to the remote machine.</p>
+<h4><code>sftp&gt; mput filename1 filename2 filename2</code></h4>
+<div class="highlight"><pre><span></span>sftp&gt; mput localFile1.txt localFile2.txt localFile3.txt
+</pre></div>
+<p>Upload several files from your loacl machine to the remote machine.</p>
+<h4><code>sftp&gt; put -r directory/</code></h4>
+<div class="highlight"><pre><span></span>sftp&gt; mkdir localDirectory1
+sftp&gt; put -r localDirectory/
+</pre></div>
+<p>To upload a directory from your local machine to the remote machine, first make a new destination directory on the remote machine, and then upload the directory from your local machine using <code>put</code>.</p>
+<h4><code>sftp&gt; get filename</code></h4>
+<div class="highlight"><pre><span></span>sftp&gt; get remoteFile1.txt
+</pre></div>
+<p>Download a single file from the remote machine to your local machine.</p>
+<h4><code>sftp&gt; mget filename1 filename2 filename2</code></h4>
+<div class="highlight"><pre><span></span>sftp&gt; mget remoteFile1.txt remoteFile2.txt remoteFile3.txt
+</pre></div>
+<p>Download several files from the remote machine to your local machine.</p>
+<h4><code>sftp&gt; get -r directory</code></h4>
+<div class="highlight"><pre><span></span>sftp&gt; get -r remoteDirectory1
+</pre></div>
+<p>Download a directory and its contents from the remote machine to your local machine.</p>
+<h4><code>sftp&gt; ?</code></h4>
+<div class="highlight"><pre><span></span>sftp&gt; ?
+
+Available commands:
+bye                                Quit sftp
+<span class="nb">cd</span> path                            Change remote directory to <span class="s1">&#39;path&#39;</span>
+chgrp grp path                     Change group of file <span class="s1">&#39;path&#39;</span> to <span class="s1">&#39;grp&#39;</span>
+chmod mode path                    Change permissions of file <span class="s1">&#39;path&#39;</span> to <span class="s1">&#39;mode&#39;</span>
+chown own path                     Change owner of file <span class="s1">&#39;path&#39;</span> to <span class="s1">&#39;own&#39;</span>
+df <span class="o">[</span>-hi<span class="o">]</span> <span class="o">[</span>path<span class="o">]</span>                    Display statistics <span class="k">for</span> current directory or
+filesystem containing <span class="s1">&#39;path&#39;</span>
+<span class="nb">exit</span>                               Quit sftp
+get <span class="o">[</span>-Ppr<span class="o">]</span> remote <span class="o">[</span>local<span class="o">]</span>          Download file
+reget remote <span class="o">[</span>local<span class="o">]</span>            Resume download file
+<span class="nb">help</span>                               Display this <span class="nb">help</span> text
+lcd path                           Change <span class="nb">local</span> directory to <span class="s1">&#39;path&#39;</span>
+lls <span class="o">[</span>ls-options <span class="o">[</span>path<span class="o">]]</span>            Display <span class="nb">local</span> directory listing
+lmkdir path                        Create <span class="nb">local</span> directory
+ln <span class="o">[</span>-s<span class="o">]</span> oldpath newpath            Link remote file <span class="o">(</span>-s <span class="k">for</span> symlink<span class="o">)</span>
+lpwd                               Print <span class="nb">local</span> working directory
+ls <span class="o">[</span>-1afhlnrSt<span class="o">]</span> <span class="o">[</span>path<span class="o">]</span>             Display remote directory listing
+lumask <span class="nb">umask</span>                       Set <span class="nb">local</span> <span class="nb">umask</span> to <span class="s1">&#39;umask&#39;</span>
+mkdir path                         Create remote directory
+progress                           Toggle display of progress meter
+put <span class="o">[</span>-Ppr<span class="o">]</span> <span class="nb">local</span> <span class="o">[</span>remote<span class="o">]</span>          Upload file
+<span class="nb">pwd</span>                                Display remote working directory
+quit                               Quit sftp
+rename oldpath newpath             Rename remote file
+rm path                            Delete remote file
+rmdir path                         Remove remote directory
+symlink oldpath newpath            Symlink remote file
+version                            Show SFTP version
+!command                           Execute <span class="s1">&#39;command&#39;</span> in <span class="nb">local</span> shell
+!                                  Escape to <span class="nb">local</span> shell
+?                                  Synonym <span class="k">for</span> <span class="nb">help</span>
+</pre></div>
+<p>If you cannot remember how to execute a specific command, use the <code>?</code> to list all possible commands within <em>sftp</em> with explanations of their functionality.</p>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

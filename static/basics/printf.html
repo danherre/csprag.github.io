@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - printf</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>printf</h2>
+<p><code>printf</code> is used to format and output data.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">printf</span> format <span class="o">[</span>argument<span class="o">]</span>
+$ <span class="nb">printf</span> <span class="s2">&quot;%f\n&quot;</span> <span class="m">7</span>
+<span class="m">7</span>.000000
+$ <span class="nb">printf</span> <span class="s2">&quot;%d\n &quot;</span> 0xF
+<span class="m">15</span>
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>printf</code></h4>
+<div class="highlight"><pre><span></span>$ <span class="nb">printf</span> <span class="s2">&quot;%f\n&quot;</span> <span class="m">5</span>
+</pre></div>
+<h4>Break it down</h4>
+<ul>
+<li>Prints out the number 5 as a float on a new line. The default is to print with 6 decimals.</li>
+</ul>
+<div class="highlight"><pre><span></span>$ <span class="nb">printf</span> <span class="s2">&quot;\t\&quot;Quotations\&quot;\t\n&quot;</span>
+    <span class="s2">&quot;Quotations&quot;</span>    
+$
+</pre></div>
+<h4>Break it down</h4>
+<ul>
+<li><p>This command takes advantage of the ability for <code>printf</code> to use whitespace by adding tabs into the output using \t to add tabs and a newline at the end</p>
+</li>
+<li><p>This command also demonstrates how to add characters to strings that would normally give a command to <code>printf</code>. Quotations usually specify what is meant to be fed into <code>printf</code>, but using \" allows an actual double quote to be inserted into the string.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>$ <span class="nb">printf</span> <span class="s2">&quot;put a number here: %d and a different one here: %d\n&quot;</span> <span class="m">21</span> <span class="m">45</span>
+put a number here: <span class="m">21</span> and a different one here: <span class="m">45</span>
+</pre></div>
+<h4>Break it down</h4>
+<ul>
+<li>This command takes advantage of being able to insert decimal numbers into strings using the %d to refer to decimals</li>
+</ul>
+<div class="highlight"><pre><span></span>$ <span class="nv">whatIMade</span><span class="o">=</span><span class="s2">&quot;variable&quot;</span>
+$ <span class="nv">myVariable</span><span class="o">=</span><span class="m">56</span>
+$ <span class="nb">printf</span> <span class="s2">&quot;I made a %s and its value is %d. Wow!\n&quot;</span> <span class="nv">$whatIMade</span> <span class="nv">$myVariable</span>
+I made a variable and its value is <span class="m">56</span>. Wow!
+</pre></div>
+<h4>Break it down</h4>
+<ul>
+<li>Variables can be referenced and used in place of strings, decimals, or other types</li>
+</ul>
+<h4>Using printf in a script</h4>
+<p>The script input:</p>
+<div class="highlight"><pre><span></span><span class="c1">#/bin/bash</span>
+<span class="nv">line</span><span class="o">===============================</span>
+<span class="nv">line</span><span class="o">=</span><span class="nv">$line$line</span>
+
+<span class="nv">header</span><span class="o">=</span><span class="s2">&quot;\n %-10s %8s %10s %11s\n&quot;</span>
+<span class="nv">format</span><span class="o">=</span><span class="s2">&quot; %-10s %08d %10s %11.2f\n&quot;</span>
+
+<span class="nv">width</span><span class="o">=</span><span class="m">43</span>
+
+<span class="nb">printf</span> <span class="s2">&quot;</span><span class="nv">$header</span><span class="s2">&quot;</span> <span class="s2">&quot;ITEM NAME&quot;</span> <span class="s2">&quot;ITEM ID&quot;</span> <span class="s2">&quot;COLOR&quot;</span> <span class="s2">&quot;PRICE&quot;</span>
+
+<span class="nb">printf</span> <span class="s2">&quot;%</span><span class="nv">$width</span><span class="s2">.</span><span class="si">${</span><span class="nv">width</span><span class="si">}</span><span class="s2">s\n&quot;</span> <span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span>
+
+<span class="nb">printf</span> <span class="s2">&quot;</span><span class="nv">$format</span><span class="s2">&quot;</span> <span class="se">\</span>
+Triangle <span class="m">13</span>  red <span class="m">20</span> <span class="se">\</span>
+Oval <span class="m">204449</span> <span class="s2">&quot;dark blue&quot;</span> <span class="m">65</span>.656 <span class="se">\</span>
+Square <span class="m">3145</span> orange .7
+</pre></div>
+<p>After running script:</p>
+<div class="highlight"><pre><span></span>ITEM NAME   ITEM ID      COLOR       <span class="nv">PRICE</span>
+<span class="o">===========================================</span>
+ Triangle   <span class="m">00000013</span>        red       <span class="m">20</span>.00
+ Oval       <span class="m">00204449</span>  dark blue       <span class="m">65</span>.66
+ Square     <span class="m">00003145</span>     orange        <span class="m">0</span>.70
+</pre></div>
+<h4>Break it down</h4>
+<ul>
+<li>Using a script to be able to set up different variables to format terminal output to make a table</li>
+<li>header and format specify strings, decimals, and floats that are of a certain length to make table columns consistent</li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

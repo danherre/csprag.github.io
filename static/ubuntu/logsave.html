@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - logsave</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>logsave</h2>
+<p>logsave saves the output of a command into a logfile</p>
+<div class="highlight"><pre><span></span><span class="nv">$logsave</span> file.txt <span class="o">{</span>linux command<span class="o">}</span>
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<p>On top of the output, logsave will also add a timestamp and results of the command to standard output.  If the designated file does not appear, logsave will queue the data and write to the file upon its creation.</p>
+<p>The logsave command also takes a few options:</p>
+<p>-a
+This appends output to the designated file, rather than replacing its current contents.
+-s
+This skips writing to the log file text which is bracketed with a control-A (ASCII 001 or Start of Header) and control-B (ASCII 002 or Start of Text), allowing progress bar information to be visible on the console, but not written to the file.<br>
+-v
+This displays verbose output.</p>
+<h4>Example command</h4>
+<p>$ logsave output.txt df -h</p>
+<h5>Break it down</h5>
+<p>Here, logsave saves the output of df, a Linux command that shows free disk space, to var/output.txt, the designated file.</p>
+<h4>Example command</h4>
+<p>$ logsave -a output.log echo "hello world"
+hello world</p>
+<p>$ cat output.log
+Log of echo Hello world
+Wed Nov 24 16:51:24 2010</p>
+<p>Hello world</p>
+<h2>Wed Nov 24 16:51:24 2010</h2>
+<h5>Break it down</h5>
+<p>Here is another logsave command.  The results of the echo command are printed (note, appended) to output.log.</p>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

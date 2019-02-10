@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - df</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>df</h2>
+<p><code>df</code> displays the amount of disk space available on the file system containing
+each file name argument.</p>
+<div class="highlight"><pre><span></span>$ df <span class="o">[</span>OPTIONS<span class="o">]</span> <span class="o">[</span>FOLDER<span class="o">]</span>
+</pre></div>
+<hr>
+<p>If no file name is given, the space available on all currently mounted file
+systems is shown. Disk space is shown in 1 K blocks by default, unless the
+environment variable <code>POSIXLY_CORRECT</code> is set, in which case 512-byte blocks are
+used.</p>
+<p>Display values are in units of the first available <code>SIZE</code> from <code>--block-size</code>,
+and the <code>DF_BLOCK_SIZE</code>, <code>BLOCK_SIZE</code> and <code>BLOCKSIZE</code> environment variables.
+Otherwise, units default to 1024 bytes (or 512 if <code>POSIXLY_CORRECT</code> is set).</p>
+<p><code>SIZE</code> is an integer and optional unit (example: <code>10M</code> is 10*1024*1024). Units are
+<code>K</code>, <code>M</code>, <code>G</code>, <code>T</code>, <code>P</code>, <code>E</code>, <code>Z</code>, <code>Y</code> (powers of 1024) or <code>KB</code>, <code>MB</code>, ... (powers of 1000).</p>
+<p>If an argument is the absolute file name of a disk device node containing a
+mounted file system, <code>df</code> shows the space available on that file system rather
+than on the file system containing the device node (which is always the root
+                                                    file system). <code>df</code> cannot show
+the space available on unmounted file systems, because on most kinds of systems
+doing so requires very system-specific knowledge of file system structures.</p>
+<h3>Useful Options / Example</h3>
+<h4><code>df -h</code></h4>
+<p>Display all file systems and their disk usage but uses human readable formatting.</p>
+<div class="highlight"><pre><span></span>$ df -h
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/vg1-lv_root  244G   12G  220G   <span class="m">6</span>% /
+devtmpfs                 <span class="m">7</span>.8G     <span class="m">0</span>  <span class="m">7</span>.8G   <span class="m">0</span>% /dev
+tmpfs                    <span class="m">7</span>.8G  102M  <span class="m">7</span>.7G   <span class="m">2</span>% /dev/shm
+tmpfs                    <span class="m">7</span>.8G  <span class="m">8</span>.7M  <span class="m">7</span>.8G   <span class="m">1</span>% /run
+tmpfs                    <span class="m">7</span>.8G     <span class="m">0</span>  <span class="m">7</span>.8G   <span class="m">0</span>% /sys/fs/cgroup
+tmpfs                    300M  <span class="m">6</span>.0M  295M   <span class="m">2</span>% /var/lib/sss/db
+/dev/sda4                485M  155M  305M  <span class="m">34</span>% /boot
+/dev/sda1                496M   36M  461M   <span class="m">8</span>% /boot/efi
+/dev/mapper/vg1-lv_tmp    30G   45M   28G   <span class="m">1</span>% /tmp
+AFS                      <span class="m">2</span>.0T     <span class="m">0</span>  <span class="m">2</span>.0T   <span class="m">0</span>% /afs
+tmpfs                    <span class="m">1</span>.6G   32K  <span class="m">1</span>.6G   <span class="m">1</span>% /run/user/99515263
+</pre></div>
+<h4>Example command</h4>
+<h4><code>df [FOLDER]</code></h4>
+<p>Display the amount of free space in the <code>public_html</code> directory</p>
+<div class="highlight"><pre><span></span>$ df example_folder
+Filesystem      1K-blocks  Used  Available Use% Mounted on
+AFS            <span class="m">2147483647</span>     <span class="m">0</span> <span class="m">2147483647</span>   <span class="m">0</span>% /home/divshar
+</pre></div>
+<h4>Options</h4>
+<table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a, --all</td>
+<td>Include dummy file systems.</td>
+</tr>
+<tr>
+<td>-B, --block-size=SIZE</td>
+<td>Scale sizes by SIZE before printing them. E.g., '-BM' prints sizes in units of 1,048,576 bytes. See "SIZE Format" below for more information.</td>
+</tr>
+<tr>
+<td>--total</td>
+<td>Display a grand total.</td>
+</tr>
+<tr>
+<td>-h, --human-readable</td>
+<td>Print sizes in human readable format (e.g., 1K 234M 2G).</td>
+</tr>
+<tr>
+<td>-H, --si</td>
+<td>Same as -h, but use powers of 1000 instead of 1024.</td>
+</tr>
+<tr>
+<td>-i, --inodes</td>
+<td>List inode information instead of block usage.</td>
+</tr>
+<tr>
+<td>-k</td>
+<td>Like --block-size=1K.</td>
+</tr>
+<tr>
+<td>-l, --local</td>
+<td>Limit listing to local file systems.</td>
+</tr>
+<tr>
+<td>--no-sync</td>
+<td>Do not invoke a sync before getting usage info, which is the default setting.</td>
+</tr>
+<tr>
+<td>-P, --portability</td>
+<td>Use the POSIX output format.</td>
+</tr>
+<tr>
+<td>--sync</td>
+<td>Invoke a sync before getting usage info.</td>
+</tr>
+<tr>
+<td>-t, --type=TYPE</td>
+<td>Limit listing to file systems of type TYPE.</td>
+</tr>
+<tr>
+<td>-T, --print-type</td>
+<td>Print file system type.</td>
+</tr>
+<tr>
+<td>-x, --exclude-type=TYPE</td>
+<td>Limit listing to file systems not of type TYPE.</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>Ignored; included for compatibility reasons.</td>
+</tr>
+<tr>
+<td>--help</td>
+<td>Display a help message and exit.</td>
+</tr>
+<tr>
+<td>--version</td>
+<td>Output version information and exit.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

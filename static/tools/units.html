@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - units</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>units</h2>
+<p><code>units</code> converts quantities from one unit to another unit. It can be used interactively or non-interactively.</p>
+<p>To use interactively, type units into the command prompt:</p>
+<div class="highlight"><pre><span></span>$ units
+</pre></div>
+<p>To use non-interactively:</p>
+<div class="highlight"><pre><span></span>$ units <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span><span class="s1">&#39;from-unit&#39;</span> <span class="s1">&#39;to-unit&#39;</span><span class="o">]</span>
+</pre></div>
+<hr>
+<h2>Useful Options / Examples</h2>
+<p>To view available units, look in /usr/share/units/definitions.units</p>
+<h3>Using <code>units</code> Interactively</h3>
+<p>Typing <code>units</code> into the terminal brings up an interactive prompt. The interactive prompt will ask for the unit that you have. Then, it will ask for the unit that you want. In the output, the line with the <code>*</code> gives the result. The line with the <code>/</code> gives the inverse of the conversion factor. In the example below, 10 meters is 32.808399 feet, and 1 foot is 0.03048 decameters.</p>
+<div class="highlight"><pre><span></span>$ units
+You have: <span class="m">10</span> meters
+You want: feet
+  * <span class="m">32</span>.808399
+  / <span class="m">0</span>.03048
+</pre></div>
+<h3>Using <code>units</code> Non-Interactively</h3>
+<p>Make conversions using one line.</p>
+<div class="highlight"><pre><span></span>$ units <span class="s1">&#39;10 meters&#39;</span> <span class="s1">&#39;feet&#39;</span>
+   * <span class="m">32</span>.808399
+   / <span class="m">0</span>.03048
+</pre></div>
+<h3>Useful flags:</h3>
+<p><code>units --digits &lt;integer&gt;</code></p>
+<p>The <code>--digits</code> flag specifies the output to a certain number of digits specified by the options.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ units --digits <span class="m">3</span> <span class="s1">&#39;10 meters&#39;</span> <span class="s1">&#39;feet&#39;</span>
+   * <span class="m">32</span>.8
+   / <span class="m">0</span>.305
+</pre></div>
+<p><code>units --verbose</code></p>
+<p>The <code>--verbose</code> flag shows slightly more verbose output.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ units --verbose <span class="s1">&#39;10 meters&#39;</span> <span class="s1">&#39;feet&#39;</span>
+   <span class="m">10</span> <span class="nv">meters</span> <span class="o">=</span> <span class="m">32</span>.808399 feet
+   <span class="m">10</span> <span class="nv">meters</span> <span class="o">=</span> <span class="o">(</span><span class="m">1</span> / <span class="m">0</span>.03048<span class="o">)</span> feet
+</pre></div>
+<h3>Converting Temperatures</h3>
+<p>There is a special syntax for temperatures. Specifically, Fahrenheit can be indicated by <code>tempF</code> and Celcius can be indicated by <code>tempC</code>. To assign a value to either of these units, use a number enclosed in parentheses after the unit. <code>tempF(32)</code> means 32 degrees Fahrenheit.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span>$ units <span class="s1">&#39;tempF(32)&#39;</span> <span class="s1">&#39;tempC&#39;</span>
+   <span class="m">0</span>
+</pre></div>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

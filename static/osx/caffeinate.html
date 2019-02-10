@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - caffeinate</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>caffeinate</h2>
+<p><code>caffeinate</code> is used to caffeinate your computer, i.e. prevent it from automatically going to sleep when idle, it is primarily used by processes, applications like 'Caffeine' and 'Amphetamine' are wrappers to this command.</p>
+<div class="highlight"><pre><span></span>$ caffeinate
+</pre></div>
+<hr>
+<h3>Where to install</h3>
+<p>'caffeinate' usually comes in built with OSX's command-line tools. If you don't have them, you can install them via:</p>
+<div class="highlight"><pre><span></span>xcode-select --install
+</pre></div>
+<h3>Synopsis</h3>
+<div class="highlight"><pre><span></span>caffeinate <span class="o">[</span>-disu<span class="o">]</span> <span class="o">[</span>-t timeout<span class="o">]</span> <span class="o">[</span>-w pid<span class="o">]</span> <span class="o">[</span>utility arguments...<span class="o">]</span>
+</pre></div>
+<h3>Flags</h3>
+<p>Here are some cool flags that you could use within your program.</p>
+<p>[-w pid]</p>
+<p>Each running process has a unique pid. A good way to see what the pid for a particular process is:</p>
+<div class="highlight"><pre><span></span>pgrep &lt;process_name&gt;
+</pre></div>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><span class="c1">#caffeinate till process with pid 4565 exits</span>
+caffeine -w <span class="m">4565</span>
+</pre></div>
+<p>[-t time]</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><span class="c1">#caffeinate for time seconds</span>
+caffeinate -t <span class="m">5000</span>
+</pre></div>
+<p>Below are some other flags and their descriptions, try them out!</p>
+<table>
+<thead><tr>
+<th style="text-align:center">Flag</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-d</td>
+<td style="text-align:center">create an assertion to prevent the display from sleeping</td>
+</tr>
+<tr>
+<td style="text-align:center">-i</td>
+<td style="text-align:center">create an assertion to prevent the system from idle sleeping</td>
+</tr>
+<tr>
+<td style="text-align:center">-t</td>
+<td style="text-align:center">specifies the timeout value for which this assertion is valid</td>
+</tr>
+<tr>
+<td style="text-align:center">-m</td>
+<td style="text-align:center">create an assertion to prevent disk from idle sleeping</td>
+</tr>
+<tr>
+<td style="text-align:center">-s</td>
+<td style="text-align:center">create an assertion to prevent the system from sleeping, only available when connected to charger</td>
+</tr>
+<tr>
+<td style="text-align:center">-u</td>
+<td style="text-align:center">creates an assertion to declare that the user is active. if no timeout value is specified, it defaults to 5 seconds</td>
+</tr>
+<tr>
+<td style="text-align:center">-w</td>
+<td style="text-align:center">waits for process with specified pid to exit</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

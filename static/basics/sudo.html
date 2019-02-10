@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - sudo</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>sudo</h2>
+<p><code>sudo</code> allows a user to execute a command as a different user (with the default being the root user). <code>sudo</code> is useful when commands need to be performed with elevated privileges, such as installing system updates.</p>
+<div class="highlight"><pre><span></span>$    sudo apt-get update
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>sudo -ll</code></h4>
+<p>This allows a user to find out all of the root commands that they are able to execute and all the users they are able to execute these commands as. <code>sudo -l</code> could be used to do this, but for long lists, <code>sudo -ll</code> produces a cleaner output.</p>
+<div class="highlight"><pre><span></span>user@computer-VirtualBox:~/c4cs.github.io$ sudo -ll
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> user: 
+Matching Defaults entries <span class="k">for</span> user on computer:
+    env_reset, mail_badpass,
+    <span class="nv">secure_path</span><span class="o">=</span>/usr/local/sbin<span class="se">\:</span>/usr/local/bin<span class="se">\:</span>/usr/sbin<span class="se">\:</span>/usr/bin<span class="se">\:</span>/sbin<span class="se">\:</span>/bin<span class="se">\:</span>/snap/bin
+User user may run the following commands on computer:
+Sudoers entry:
+    RunAsUsers: ALL
+    RunAsGroups: ALL
+    Commands:
+    ALL
+</pre></div>
+<h4><code>sudo -u</code></h4>
+<p>This allows a user to carry out a command as another user. It will execute the command as the specified target user.</p>
+<div class="highlight"><pre><span></span>$    sudo -u serverUser rails db:drop
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> currentUser:
+</pre></div>
+<h4><code>sudo -b</code> or <code>sudo &amp;</code></h4>
+<p>This runs a sudo command in the background, allowing the current terminal session to still be used while the command is running. Note that most interactive commands will not work correctly in background mode.</p>
+<div class="highlight"><pre><span></span>$    sudo -b matlab
+</pre></div>
+<h4><code>sudo !!</code></h4>
+<p>Runs the previous command with <code>sudo</code>.</p>
+<div class="highlight"><pre><span></span>$    user@computer:~$ apt-get update
+Reading package lists... Done
+W: chmod <span class="m">0700</span> of directory /var/lib/apt/lists/partial failed - SetupAPTPartialDirectory <span class="o">(</span><span class="m">1</span>: Operation not permitted<span class="o">)</span>
+E: Could not open lock file /var/lib/apt/lists/lock - open <span class="o">(</span><span class="m">13</span>: Permission denied<span class="o">)</span>
+E: Unable to lock directory /var/lib/apt/lists/
+W: Problem unlinking the file /var/cache/apt/pkgcache.bin - RemoveCaches <span class="o">(</span><span class="m">13</span>: Permission denied<span class="o">)</span>
+W: Problem unlinking the file /var/cache/apt/srcpkgcache.bin - RemoveCaches <span class="o">(</span><span class="m">13</span>: Permission denied<span class="o">)</span>
+$    user@computer:~$ sudo !!
+sudo apt-get update
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> user: 
+Hit:1 http://us.archive.ubuntu.com/ubuntu xenial InRelease
+Get:2 http://us.archive.ubuntu.com/ubuntu xenial-updates InRelease <span class="o">[</span><span class="m">102</span> kB<span class="o">]</span>    
+Hit:3 http://ppa.launchpad.net/canonical-chromium-builds/stage/ubuntu xenial InRelease
+Get:4 http://security.ubuntu.com/ubuntu xenial-security InRelease <span class="o">[</span><span class="m">102</span> kB<span class="o">]</span>     
+Get:5 http://us.archive.ubuntu.com/ubuntu xenial-backports InRelease <span class="o">[</span><span class="m">102</span> kB<span class="o">]</span>  
+Get:6 http://us.archive.ubuntu.com/ubuntu xenial-updates/universe amd64 Packages <span class="o">[</span><span class="m">540</span> kB<span class="o">]</span>
+Fetched <span class="m">846</span> kB in 0s <span class="o">(</span><span class="m">1</span>,149 kB/s<span class="o">)</span>                                              
+Reading package lists... Done
+</pre></div>
+<h4><code>sudo -n</code></h4>
+<p>This runs the command specified without prompting the user for their password. The <code>-n</code> flag stands for <em>non-interactive</em>. This is particularly useful when writing shell-scripts.</p>
+<h4><code>sudo -v</code></h4>
+<p>This extends the verification timeout period and allows users to continue to carry out <code>sudo</code> commands without having to enter the password for a longer period of time.</p>
+<h3>Related Commands</h3>
+<p><a href="../commands/su">su</a></p>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

@@ -1,0 +1,1803 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - Reference</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<p>
+    <h2>Quick Reference</h2>
+</p>
+
+<p>
+    This page collects commands we have (or will) discuss throughout the course. Click on a command for more details on
+    its operation and some examples of common or useful operations. We encourage students to contribute to this page
+    through the advanced homework on git and open source contributions.
+</p>
+
+<div class="container-fluid">
+    
+    <h3>Tutorials</h3>
+    <div class="row">
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tutorials/Caen-Connect-Tutorial.html">
+                <h5>Caen Connect Tutorial</h5>
+            </a>
+            <p>Caen Connect Tutorial walks through with you the way to sync your local project folder to your remote CAEN (Linux) machine instantly using SFTP, so you could ssh into CAEN, and do the stuff that you want CAEN to do.</p>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tutorials/VM.html">
+                <h5>Optimizing Your Virtual Machine</h5>
+            </a>
+            <p>A few things Professor Darden did to spruce up his virtual machine that you can try!</p>
+
+        </div>
+        
+    </div>
+    
+    <h3>Editors</h3>
+    <div class="row">
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/editors/atom.html">
+                <h5>Atom</h5>
+            </a>
+            <p>Atom is a IDE like editor for programmers, designed by Github to make programming more enjoyable.</p>
+<p>Atom is free and can be downloaded straightly from Github website.</p>
+<p><a href="https://atom.io/">Download Link</a></p>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/editors/ed.html">
+                <h5>ed</h5>
+            </a>
+            <p><code>ed</code> is a standard, minimal and not a terribly intuitive text editor for Unix systems.</p>
+<p>To open <code>ed</code> simply type the following:</p>
+<div class="highlight"><pre><span></span><span class="nv">$ed</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/editors/emacs.html">
+                <h5>emacs</h5>
+            </a>
+            <p><code>emacs</code> is used to edit files in emacs.</p>
+<div class="highlight"><pre><span></span>$ emacs filename
+</pre></div>
+<p>Then file specified by <code>filename</code> will be opened in emacs, and you can use emacs to edit it.</p>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/editors/gedit.html">
+                <h5>gedit</h5>
+            </a>
+            <p><code>gedit</code> is used to edit files in gedit.</p>
+<div class="highlight"><pre><span></span>$ gedit filename
+</pre></div>
+<p>Then file specified by <code>filename</code> will be opened in gedit, and you can use gedit to edit it.</p>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/editors/nano.html">
+                <h5>nano</h5>
+            </a>
+            <p><code>nano</code> is a simple text editor for unix systems, with a much smaller learning curve than vi and emacs. It is great for people who are new to the command line, and need to quickly make small changes to files.</p>
+<div class="highlight"><pre><span></span>$ nano filename
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/editors/vi.html">
+                <h5>vi</h5>
+            </a>
+            <p><code>vi</code> is a text editor for programmers, designed to facilitate optimal efficiency
+when writing code.</p>
+<p>To open <code>vi</code>, simply type the following:</p>
+<div class="highlight"><pre><span></span>$ vi <span class="o">[</span>filename<span class="o">]</span>
+</pre></div>
+
+        </div>
+        
+    </div>
+    
+    <h3>Basics</h3>
+    <div class="row">
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/alias.html">
+                <h5>alias</h5>
+            </a>
+            <p><code>alias</code> instructs the shell to replace one string with another when executing commands.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">alias</span> <span class="nv">rm</span><span class="o">=</span><span class="s1">&#39;rm -i&#39;</span>
+$ rm sample.txt
+rm: remove regular empty file <span class="s1">&#39;sample.txt&#39;</span>? Y
+$
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/bg.html">
+                <h5>bg</h5>
+            </a>
+            <p><code>bg</code> resumes a stopped job in the background, so the terminal remains usable.</p>
+<div class="highlight"><pre><span></span>$ gedit file.txt
+^Z
+$ <span class="nb">bg</span> <span class="s1">&#39;gedit file.txt&#39;</span>
+$ <span class="nb">jobs</span>
+<span class="o">[</span><span class="m">1</span><span class="o">]</span>+ Running    gedit file.txt
+$
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/cat.html">
+                <h5>cat</h5>
+            </a>
+            <p><code>cat</code> is a command that <em>concatenates</em> files and prints the concatenated files to the standard output.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;This is an:&quot;</span> &gt; beginning.txt
+$ <span class="nb">echo</span> <span class="s2">&quot;example&quot;</span> &gt; end.txt
+$ cat beginning.txt end.txt
+This is an:
+example
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/cd.html">
+                <h5>cd</h5>
+            </a>
+            <p><code>cd</code> is used to <em>change directory</em>. Unlike most commands, <code>cd</code> is not
+a separate program, it is a shell built-in. <code>cd</code> is a useful tool to navigate up and down the hierarchy of the file systems on your machine, and move into a given directory.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~
+$ <span class="nb">cd</span> /home
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/chmod.html">
+                <h5>chmod</h5>
+            </a>
+            <p><!--TODO: Add documentation for this command by submitting a pull request.-->
+<!-- one line explanation would go here -->
+<code>chmod</code> (change mode) is the command to change permissions to system objects (files and directories).</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ chmod u+x filename
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/chown_chgrp.html">
+                <h5>chown/chgrp</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/cp.html">
+                <h5>cp</h5>
+            </a>
+            <p><code>cp</code> is used to <em>copy</em> files or directories.</p>
+<div class="highlight"><pre><span></span>$ cp <span class="nb">source</span> destination
+$ cp file1.txt file2.txt
+$ cp -b file1.txt file2.txt
+$ cp -v file1.txt file2.txt
+$ cp * ~/Desktop
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/cut.html">
+                <h5>cut</h5>
+            </a>
+            <p><code>cut</code> is for cutting sections from each line of files and writing the result to standard output.</p>
+<div class="highlight"><pre><span></span>$ cut <span class="o">[</span>OPTIONS<span class="o">]</span> <span class="o">[</span>FILE<span class="o">]</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/date.html">
+                <h5>date</h5>
+            </a>
+            <!-- one line explanation would go here -->
+`date` returns a system time specified by the user.
+<!-- minimal example -->
+
+<div class="highlight"><pre><span></span>$ date
+Tue Feb  <span class="m">6</span> <span class="m">12</span>:42:38 EST <span class="m">2018</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/df.html">
+                <h5>df</h5>
+            </a>
+            <p><code>df</code> displays the amount of disk space available on the file system containing
+each file name argument.</p>
+<div class="highlight"><pre><span></span>$ df <span class="o">[</span>OPTIONS<span class="o">]</span> <span class="o">[</span>FOLDER<span class="o">]</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/dot.html">
+                <h5>dot (.)</h5>
+            </a>
+            <p>The period (dot) is short hand for the bash built in "source". It will read and execute commands from a file in the current environment and return the exit status of the last command executed.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;echo &quot;</span>hello world<span class="s2">&quot;&quot;</span> &gt; hello
+$ . hello
+hello world
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/du.html">
+                <h5>du</h5>
+            </a>
+            <p><code>du</code>, or <em>disk usage</em>, reports the sizes of directories, including of all of their contents and the sizes of individual files, and the sizes of each directory in the directory tree.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ du <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>directories and/or files<span class="o">]</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/echo.html">
+                <h5>echo</h5>
+            </a>
+            <p><code>echo</code> is used to display a message on the screen and write the given message to standard output with a newline at the end.  <code>echo</code> is implemented as built-in command in many command shells like bash, ksh, csh.
+<!-- one line explanation would go here --></p>
+<!-- minimal example -->
+
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;Hello World&quot;</span>
+Hello World
+$ <span class="nb">echo</span> Hello World
+Hello World
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/expand.html">
+                <h5>expand</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/fg.html">
+                <h5>fg</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/gcc.html">
+                <h5>gcc flags</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/gzip.html">
+                <h5>gzip</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/halt.html">
+                <h5>halt</h5>
+            </a>
+            <p><code>halt</code>, together with <code>poweroff</code>, <code>reboot</code> are commands you can run as root to stop the system hardware. Specifically, <code>halt</code> instructs the hardware to stop all CPU functions. These commands require superuser privileges. If you are not logged in as root, you will need to prefix the command with <code>sudo</code> or the signal will not be sent.</p>
+<div class="highlight"><pre><span></span>$ sudo halt
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> xxx:
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/hash.html">
+                <h5>hash</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/head.html">
+                <h5>head</h5>
+            </a>
+            <p><code>head</code> is a command-line utility tool that outputs the first lines of a given file to the standard output. By default, <code>head</code> will return the first <strong>10</strong> lines of the specified file.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ head helloworld.txt
+Hi World!
+Hey World!
+Hello World!
+Howdy-do World!
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/history.html">
+                <h5>history</h5>
+            </a>
+            <p><code>history</code> is used to display the most recently used commands.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">history</span> <span class="o">[</span>options<span class="o">]</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/id.html">
+                <h5>id</h5>
+            </a>
+            <p><code>id</code> is a command that prints out the effective and real user and group ids.
+<!-- one line explanation would go here --></p>
+<!-- minimal example -->
+
+<p>The syntax for the command is:</p>
+<div class="highlight"><pre><span></span>id <span class="o">[</span>option<span class="o">(</span>s<span class="o">)]</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/jobs.html">
+                <h5>jobs</h5>
+            </a>
+            <p><code>jobs</code> is used to list the jobs running in the background of the current shell session.</p>
+<p>The general format is</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ <span class="nb">jobs</span> <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>jobID<span class="o">]</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/join.html">
+                <h5>join</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/kill.html">
+                <h5>kill</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/less.html">
+                <h5>less</h5>
+            </a>
+            <p><code>less</code> is a tool to view a text file one screen at a time. You can navigate through the file with <code>j</code> or <code>RETURN</code>, and backwards with <code>k</code></p>
+<!-- minimal example -->
+
+<div class="highlight"><pre><span></span>$ less hello.txt
+<span class="c1"># displays hello.txt</span>
+q <span class="c1"># to quit</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/ln.html">
+                <h5>ln</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/locate.html">
+                <h5>locate</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/ls.html">
+                <h5>ls</h5>
+            </a>
+            <p><code>ls</code> is used to <em>list</em> the contents of a directory. By default, <code>ls</code> will simply print file names.</p>
+<div class="highlight"><pre><span></span>$ ls
+directory file
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/man.html">
+                <h5>man</h5>
+            </a>
+            <p><code>man</code> provides <em>manual pages</em> for terminal commands</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ man git
+<span class="c1"># displays git man page</span>
+q <span class="c1"># to quit</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/mkdir.html">
+                <h5>mkdir</h5>
+            </a>
+            <p><code>mkdir</code> is used to create directories (if they do not already exist) on a file system.</p>
+<p>The general format is</p>
+<div class="highlight"><pre><span></span>$ mkdir <span class="o">[</span>options<span class="o">]</span> directories
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/more.html">
+                <h5>more</h5>
+            </a>
+            <p>The <code>more</code> command displays the file called name in the screen. The RETURN key displays the next line of the file. The spacebar displays the next screen of the file.</p>
+<p>The syntax is:</p>
+<div class="highlight"><pre><span></span>$ more <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>files<span class="o">]</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/mv.html">
+                <h5>mv</h5>
+            </a>
+            <p><code>mv</code> is used to move a source file or directory into a destination directory. It is also commonly used to rename files.</p>
+<div class="highlight"><pre><span></span>$ mv <span class="nb">source</span> desination
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/nl.html">
+                <h5>nl</h5>
+            </a>
+            <p><code>nl</code> is used to number the lines in a file.</p>
+<div class="highlight"><pre><span></span>$ nl filename
+</pre></div>
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;hello</span>
+<span class="s2">&gt; world</span>
+<span class="s2">&gt; hi&quot;</span> &gt; hello.txt
+$ nl hello.txt
+   <span class="m">1</span>  hello
+   <span class="m">2</span>  world
+   <span class="m">3</span>  hi
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/passwd.html">
+                <h5>passwd</h5>
+            </a>
+            <p><code>passwd</code> is used to change the password of a user account
+<!-- one line explanation would go here --></p>
+<!-- minimal example -->
+
+<div class="highlight"><pre><span></span>$ passwd <span class="o">[</span>OPTION<span class="o">]</span> <span class="o">[</span>USER<span class="o">]</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/printf.html">
+                <h5>printf</h5>
+            </a>
+            <p><code>printf</code> is used to format and output data.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">printf</span> format <span class="o">[</span>argument<span class="o">]</span>
+$ <span class="nb">printf</span> <span class="s2">&quot;%f\n&quot;</span> <span class="m">7</span>
+<span class="m">7</span>.000000
+$ <span class="nb">printf</span> <span class="s2">&quot;%d\n &quot;</span> 0xF
+<span class="m">15</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/pwd.html">
+                <h5>pwd</h5>
+            </a>
+            <p><code>pwd</code> stands for print working directory. <code>pwd</code> outputs the full pathname of the current work directory.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">pwd</span>
+/home/bo/Desktop
+</pre></div>
+<p><code>pwd</code> can also be used to store the full path to the current directory.</p>
+<div class="highlight"><pre><span></span><span class="nv">x</span><span class="o">=</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/rm.html">
+                <h5>rm</h5>
+            </a>
+            <p><code>rm</code> is used to delete one or multiple files from your current directory. Be careful when using because this does not move the item to trash, it permanetly deletes it.</p>
+<div class="highlight"><pre><span></span>$ rm file1.txt file2.txt
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/rmdir.html">
+                <h5>rmdir</h5>
+            </a>
+            <p><code>rmdir</code> is used to remove empty directories.</p>
+<p>The format is</p>
+<div class="highlight"><pre><span></span>$ rmdir <span class="o">[</span>options<span class="o">]</span> directories
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/rsync.html">
+                <h5>rsync</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/seq.html">
+                <h5>seq</h5>
+            </a>
+            <p><code>seq</code> is used to produce a sequence of numbers
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ seq <span class="m">3</span>
+<span class="m">1</span>
+<span class="m">2</span>
+<span class="m">3</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/sleep.html">
+                <h5>sleep</h5>
+            </a>
+            <p>The sleep command makes your script, terminal, or anything else that is bash executable go to sleep for however long you specify</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ sleep 5s
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/sort.html">
+                <h5>sort</h5>
+            </a>
+            <p><code>sort</code> is a standard command that sorts and outputs the input it was given.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ sort names
+  Aaron
+  Brian
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/su.html">
+                <h5>su</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/sudo.html">
+                <h5>sudo</h5>
+            </a>
+            <p><code>sudo</code> allows a user to execute a command as a different user (with the default being the root user). <code>sudo</code> is useful when commands need to be performed with elevated privileges, such as installing system updates.</p>
+<div class="highlight"><pre><span></span>$    sudo apt-get update
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/tail.html">
+                <h5>tail</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/tar.html">
+                <h5>tar</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/time.html">
+                <h5>time</h5>
+            </a>
+            <p><code>time</code> writes a message to standard output giving timing statistics about the program that was run. It outputs the times in 3 categories: real time, user time, and system time.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">time</span> ./executable
+real    0m0.116s
+user    0m0.004s
+sys     0m0.008s
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/top.html">
+                <h5>top</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/true.html">
+                <h5>true</h5>
+            </a>
+            <p><code>true</code> a statement that logically evaluates to true. It is often used to check whether statements evaluated succesfully or not. It is the logical inverse of 'false', also a unix command.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">true</span>
+$ rm -rf directory <span class="o">||</span> <span class="nb">true</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/uniq.html">
+                <h5>uniq</h5>
+            </a>
+            <p><code>uniq</code>, often used with  <code>sort</code>, allows a user to report, or filter, repeated lines that are adjacent in a file.</p>
+<!-- minimal example -->
+
+<div class="highlight"><pre><span></span>$ sort in.txt <span class="p">|</span> uniq 
+line1
+line2
+line3
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/uptime.html">
+                <h5>uptime</h5>
+            </a>
+            <p><code>uptime</code> is used to check how long your computer has been on since the last reboot. This is useful for the user as it allows the user to determine whether a restart or shut down is necessary for the computer.</p>
+<div class="highlight"><pre><span></span>$ uptime
+<span class="m">11</span>:31 up <span class="m">1</span> day, <span class="m">1</span>:22, <span class="m">2</span> users, load averages <span class="m">1</span>.97 <span class="m">2</span>.04 <span class="m">2</span>.14
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/wc.html">
+                <h5>wc</h5>
+            </a>
+            <p><code>wc</code> prints newline, word, and byte counts for each <code>FILE</code>.</p>
+<div class="highlight"><pre><span></span>$ wc tecmint.txt
+<span class="m">12</span>  <span class="m">16</span> <span class="m">112</span> tecmint.txt
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/whereis.html">
+                <h5>whereis</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/which.html">
+                <h5>which</h5>
+            </a>
+            <p><code>which</code> returns the first matching command(s) in $PATH</p>
+<div class="highlight"><pre><span></span>$ which <span class="nb">echo</span>
+/bin/echo
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/who.html">
+                <h5>who</h5>
+            </a>
+            <p>Displays list of all users currently logged on</p>
+<div class="highlight"><pre><span></span>$ who
+Username console  Oct <span class="m">12</span> <span class="m">08</span>:20
+Username ttys000  Oct <span class="m">20</span> <span class="m">09</span>:35
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/basics/whoami.html">
+                <h5>whoami</h5>
+            </a>
+            <p><code>whoami</code> prints the username of the current user when invoked
+<!-- one line explanation would go here --></p>
+<!-- minimal example -->
+
+<div class="highlight"><pre><span></span>$ whoami
+mmdarden
+</pre></div>
+
+        </div>
+        
+    </div>
+    
+    <h3>Ubuntu</h3>
+    <div class="row">
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/ubuntu/logsave.html">
+                <h5>logsave</h5>
+            </a>
+            <p>logsave saves the output of a command into a logfile</p>
+<div class="highlight"><pre><span></span><span class="nv">$logsave</span> file.txt <span class="o">{</span>linux command<span class="o">}</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/ubuntu/useradd.html">
+                <h5>useradd</h5>
+            </a>
+            <p><code>useradd</code> is used to create a new user or update default new user information</p>
+<p>On Debian, <code>adduser</code> should be used instead.</p>
+<div class="highlight"><pre><span></span>$ useradd <span class="o">[</span>options<span class="o">]</span> username
+</pre></div>
+
+        </div>
+        
+    </div>
+    
+    <h3>Shells</h3>
+    <div class="row">
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/shells/clear.html">
+                <h5>clear</h5>
+            </a>
+            <p><code>clear</code> clears the terminal screen</p>
+<div class="highlight"><pre><span></span>$ clear
+$
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/shells/export.html">
+                <h5>export</h5>
+            </a>
+            <p><code>export</code> marks an environment variable to be exported with any child process. Any child process will will inherit the variable along with any other marked variables</p>
+<div class="highlight"><pre><span></span>$ <span class="nv">NAME</span><span class="o">=</span>alice
+$ <span class="nb">echo</span> <span class="nv">$NAME</span>
+alice
+$ cat test.sh
+<span class="c1">#!/usr/bin/env/bash</span>
+<span class="nb">echo</span> <span class="nv">$NAME</span>
+$ ./test.sh
+
+$ <span class="nb">export</span> NAME
+$ ./test.sh
+alice
+$ <span class="nb">export</span> <span class="nv">NAME</span><span class="o">=</span>bob
+$ ./test.sh
+bob
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/shells/help.html">
+                <h5>help</h5>
+            </a>
+            <p><code>help</code> is a program that takes a linux program as an input and prints a helpful message about the input program's behavior, its optional/required flags, and how to successfully use the program.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ <span class="nb">help</span> <span class="nb">echo</span>
+&lt;info about echo&gt;
+$ <span class="nb">help</span> <span class="nb">cd</span>
+&lt;info about cd&gt;
+</pre></div>
+
+        </div>
+        
+    </div>
+    
+    <h3>Osx</h3>
+    <div class="row">
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/osx/brew.html">
+                <h5>brew</h5>
+            </a>
+            <p><code>brew</code>, or known by its longer name as Homebrew, bills itself as the "missing package manager for OS X".</p>
+<div class="highlight"><pre><span></span>$ brew install <span class="nv">rsync</span>
+<span class="o">==</span>&gt; Installing rsync from homebrew/dupes
+<span class="o">==</span>&gt; Downloading https://homebrew.bintray.com/bottles-dupes/rsync-3.1.2.el_capitan.bottle.tar.gz
+<span class="c1">######################################################################## 100.0%</span>
+<span class="o">==</span>&gt; Pouring rsync-3.1.2.el_capitan.bottle.tar.gz
+🍺  /usr/local/Cellar/rsync/3.1.2: <span class="m">8</span> files, <span class="m">748</span>.2K
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/osx/caffeinate.html">
+                <h5>caffeinate</h5>
+            </a>
+            <p><code>caffeinate</code> is used to caffeinate your computer, i.e. prevent it from automatically going to sleep when idle, it is primarily used by processes, applications like 'Caffeine' and 'Amphetamine' are wrappers to this command.</p>
+<div class="highlight"><pre><span></span>$ caffeinate
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/osx/ditto.html">
+                <h5>Ditto</h5>
+            </a>
+            <p><code>ditto</code> is an OSX command that copies the entire contents of a directory to another, new location.</p>
+<div class="highlight"><pre><span></span>$ ditto /old/directory/ /new/directory/
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/osx/open.html">
+                <h5>open</h5>
+            </a>
+            <p><code>open</code> is used to open files, directories or URLs from the terminal.</p>
+<div class="highlight"><pre><span></span>$ open http://www.google.com
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/osx/pbcopy.html">
+                <h5>pbcopy</h5>
+            </a>
+            <p><code>pbcopy</code> is used to copy text from the terminal into the clipboard.
+The Linux equivalent of <code>pbcopy</code> is <code>xclip</code>.</p>
+<div class="highlight"><pre><span></span>$ pbcopy &lt; example.txt
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/osx/say.html">
+                <h5>Say</h5>
+            </a>
+            <p>The <code>say</code> command will speak whatever you type</p>
+<div class="highlight"><pre><span></span>$ say <span class="s2">&quot;hello c4cs&quot;</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/osx/screencapture.html">
+                <h5>screencapture</h5>
+            </a>
+            <p><code>screencapture</code> is used to capture an image of the whole, or part of the screen, saving it into the current working directory.</p>
+<div class="highlight"><pre><span></span>$ screencapture screencap.png
+</pre></div>
+
+        </div>
+        
+    </div>
+    
+    <h3>Scripting</h3>
+    <div class="row">
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/scripting/$_.html">
+                <h5>$_</h5>
+            </a>
+            <p><code>$_</code> is a special shell variable which always holds the last argument of the most recent command.</p>
+<div class="highlight"><pre><span></span>$ touch example.txt
+$ <span class="nb">echo</span> <span class="nv">$_</span>
+example.txt
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/scripting/$variable.html">
+                <h5>$ (dollar sign prefix to a variable)</h5>
+            </a>
+            <p>'$variable'
+The dollar sign prefix allows the shell to interpret the phrase as a variable.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="nv">$PATH</span>
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/scripting/append_oper.html">
+                <h5>&gt;&gt; (append operator)</h5>
+            </a>
+            <p>'&gt;&gt;' is a shell operator that you can use to append the output in an existing file.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> line <span class="m">1</span> &gt;&gt; example.txt
+$ cat example.txt
+line <span class="m">1</span>
+$ <span class="nb">echo</span> line <span class="m">2</span> &gt;&gt; example.txt
+$ cat example.txt
+line <span class="m">1</span>
+line <span class="m">2</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/scripting/pipe_oper.html">
+                <h5>| (pipe operator)</h5>
+            </a>
+            <p><code>command1 | command2 [| command3 ...]</code></p>
+<p>The pipe operator is used in bash to chain multiple commands together. The two commands are run sequentially and the ouput of command1 becomes the input of command2.</p>
+<div class="highlight"><pre><span></span>$ ls <span class="p">|</span> wc -l
+<span class="m">3</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/scripting/redir_oper.html">
+                <h5>&gt; (standard output redirection operator)</h5>
+            </a>
+            <p><code>command1 -[options] [arguments] &gt; &lt;output file name&gt;</code></p>
+<p>The standard output redirection operator is used in bash to redirect the output of one command to a specified file.</p>
+<div class="highlight"><pre><span></span>$ ./a.out &gt; output.txt
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/scripting/yes.html">
+                <h5>yes</h5>
+            </a>
+            <p><code>yes</code> will continuously output lines with <code>y</code> until user uses ctrl+c to stop. <code>yes</code> Can be useful for automating
+scripts.</p>
+<div class="highlight"><pre><span></span>$ yes
+y
+y
+^C
+$ yes n
+n
+n
+n
+^C
+</pre></div>
+
+        </div>
+        
+    </div>
+    
+    <h3>Tools</h3>
+    <div class="row">
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/apropos.html">
+                <h5>apropos</h5>
+            </a>
+            <p><code>apropos</code> searches the man database for entry that contains the string passed in as argument. 
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ apropos whoami
+whoami <span class="o">(</span><span class="m">1</span><span class="o">)</span>           - print effective userid
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/asciinema.html">
+                <h5>asciinema</h5>
+            </a>
+            <p><code>asciinema</code> is a tool that allows you to record a terminal session with out having to use screen capture. It also allows for easy copy-pasting!
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ sudo apt-get install asciinema <span class="c1">#install</span>
+$ asciinema rec <span class="c1">#start session</span>
+$ your_commands_here
+$ <span class="nb">exit</span> <span class="c1">#exit session</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/cmp.html">
+                <h5>cmp</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/comm.html">
+                <h5>comm</h5>
+            </a>
+            <p><code>comm</code> is used to check for the common lines between two sorted files line by line. This command will produce three columns of output, each showing the lines unique to file1, the unique to file2 and the common lines between file1 and file2. This is useful for checking the common content between two files.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">printf</span> <span class="s2">&quot;apple\ntomato\n&quot;</span>&gt; MyFruits.txt
+$ <span class="nb">printf</span> <span class="s2">&quot;carrot\ntomato\n&quot;</span>&gt; MyVegetables.txt
+$ comm MyFruits.txt MyVegetables.txt
+apple
+    carrot
+        tomato
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/curl.html">
+                <h5>curl</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/dc.html">
+                <h5>dc</h5>
+            </a>
+            <p><!-- one line explanation would go here -->
+dc is a desk calculator that supports unlimited-precision arithmetic and postfix notation.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>dc
+<span class="m">2</span>
+<span class="m">3</span>
++
+p
+<span class="m">5</span>
+*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/dd.html">
+                <h5>dd</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/diff.html">
+                <h5>diff</h5>
+            </a>
+            <p><code>diff</code> is used to check for the differences between two files line by line. This is very useful for checking a programs output against a file containing its expected output.</p>
+<p>~~~ bash
+$ printf "this\ndifference\n" &gt; first.txt
+$ printf "this\nsimilarity\n" &gt; second.txt
+$ diff first.txt second.txt
+2c2
+&lt; difference</p>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/factor.html">
+                <h5>factor</h5>
+            </a>
+            <p><code>factor</code> prints all of the prime factors of a number.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ factor <span class="m">42</span>
+<span class="m">42</span>: <span class="m">2</span> <span class="m">3</span> <span class="m">7</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/ffmpeg.html">
+                <h5>ffmpeg</h5>
+            </a>
+            <p><code>ffmpeg</code> is a multimedia framework used to record, convert, and stream audio and video.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span><span class="c1"># Convert between filetypes</span>
+$ ffmpeg -i input.mp4 output.avi
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/file.html">
+                <h5>file</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/find.html">
+                <h5>find</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/git.html">
+                <h5>git</h5>
+            </a>
+            <p><code>git</code> is a version control tool allowing for easy collaboration on projects.</p>
+<div class="highlight"><pre><span></span>$ git clone https://github.com/c4cs/c4cs.github.io.git
+$ <span class="nb">cd</span> c4cs.github.io
+$ <span class="nb">echo</span> <span class="s2">&quot;Modified File&quot;</span> &gt;&gt; README.md
+$ git add README.md
+$ git commit -m <span class="s2">&quot;Added to README.md&quot;</span>
+$ git push origin master
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/grep.html">
+                <h5>grep</h5>
+            </a>
+            <p><code>grep</code> is a program for searching text files for lines that match regular exprssions. It can be used for all sorts of pattern-matching and text-based query analysis.</p>
+<div class="highlight"><pre><span></span>$ grep -i crab animals.txt
+Crab
+Crab-Eating Macaque
+Hermit Crab
+Horseshoe Crab
+King Crab
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/ifconfig.html">
+                <h5>ifconfig</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/ip.html">
+                <h5>ip</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/make.html">
+                <h5>make</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/nslookup.html">
+                <h5>nslookup</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/objdump.html">
+                <h5>objdump</h5>
+            </a>
+            <p><!-- one line explanation would go here -->
+<code>objdump</code> gives you information about an object file or executable.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ gcc -std<span class="o">=</span>c99 -c hello.c
+$ objdump -r hello.o &gt; hello_relocation.info
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/pdftk.html">
+                <h5>pdftk</h5>
+            </a>
+            <p><code>pdftk</code> is a command that is used to manipulate Portable Document Format (PDF) files. There are many ways to manipulate PDFs through the command such as merging, splitting, encrypting and much more. 
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ pdftk in1.pdf in2.pdf cat output combinedIn.pdf
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/ping.html">
+                <h5>ping</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/ps.html">
+                <h5>ps</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/rev.html">
+                <h5>rev</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/scp.html">
+                <h5>scp</h5>
+            </a>
+            <p><code>scp</code>, or <em>Secure Copy</em>, is used to securely transfer files based on the <em>Secure Shell protocol</em> (<code>ssh</code>). Unlike <code>cp</code>, <code>scp</code> can transfer files from or to a remote host.</p>
+<div class="highlight"><pre><span></span>$ <span class="c1"># Syntax / Example</span>
+$ scp <span class="nb">source</span> user@host:destination
+$ scp user@host:source destination
+$ <span class="c1"># Basic Example (Local -&gt; remote)</span>
+$ scp ~/Desktop/file uniqname@login-course-2fa.engin.umich.edu:~/Documents/
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/sed.html">
+                <h5>sed</h5>
+            </a>
+            <p><code>sed</code> is a <em>stream editor</em> utility which supports insertion, deletion, and search and replace of streams then prints the edited stream to standard output.</p>
+<div class="highlight"><pre><span></span>$ sed OPTIONS... <span class="o">[</span>SCRIPT<span class="o">]</span> <span class="o">[</span>INPUTFILE...<span class="o">]</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/sftp.html">
+                <h5>sftp</h5>
+            </a>
+            <p><code>sftp</code> is used to securely transfer files between a local machine and a remote machine that is accessed via SSH. SFTP stands for Secure File Transfer Protocol.</p>
+<div class="highlight"><pre><span></span>$ sftp user@hostname
+Password: *********
+Connected to hostname.
+sftp&gt; put filename.txt
+sftp&gt; mput file1.txt file2.txt file3.txt
+sftp&gt; get file.txt
+sftp&gt; mget file1.txt file2.txt file3.txt
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/sshfs.html">
+                <h5>sshfs</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/stat.html">
+                <h5>stat</h5>
+            </a>
+            <p>Displays information about the file pointed to by [filename]</p>
+<div class="highlight"><pre><span></span>$ stat stat.md
+<span class="m">16777217</span> <span class="m">14633638</span> -rw-r--r-- <span class="m">1</span> <span class="o">[</span>user<span class="o">]</span> staff <span class="m">0</span> <span class="m">439</span> <span class="s2">&quot;Feb  9 22:08:11 2018&quot;</span>
+<span class="s2">&quot;Feb  9 22:08:08 2018&quot;</span> <span class="s2">&quot;Feb  9 22:08:08 2018&quot;</span> <span class="s2">&quot;Feb  9 21:29:18 2018&quot;</span>
+<span class="m">4096</span> <span class="m">8</span> 0x40 stat.md
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/tac.html">
+                <h5>tac</h5>
+            </a>
+            <p><code>tac</code> is used to concatenate files in reverse, line by line.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ tac numberedlines.txt
+Line number five
+Line number four
+Line number three
+Line number two
+Line number one
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/tcpdump.html">
+                <h5>tcpdump</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/telnet.html">
+                <h5>telnet</h5>
+            </a>
+            <p><code>telnet</code> is a command that uses the Telnet protocol. Telnet (short for TErminal NETwork) is a protocol designed to provide a command line interface for remotely communicating with a device or system. <code>telnet</code> can invoked on its own, or it can be invoked with a host and port argument.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ telnet
+telnet&gt;
+$ telnet examplesite.com <span class="m">22</span>
+Trying <span class="m">1</span>.2.3.4...
+Connected to examplesite.com
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/time.html">
+                <h5>time</h5>
+            </a>
+            <!-- one line explanation would go here -->
+
+
+<p><code>time</code> outputs the runtime of a program that is given as an argument.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ <span class="nb">time</span> <span class="nb">cd</span>
+
+real    0m0.008s
+user    0m0.008s
+sys     0m0.000s
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/tmux.html">
+                <h5>tmux</h5>
+            </a>
+            <p>'tmux' allows a user to use 1 terminal window to access multiple separate terminal sessions. It lets you keep running them in the background by detaching them and then reattach them to a different terminal.</p>
+<div class="highlight"><pre><span></span>$ tmux
+$ tmux new -s myname
+$ tmux a -t myname
+$ tmux ls
+$ tmux kill-session -t myname
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/touch.html">
+                <h5>touch</h5>
+            </a>
+            <p><code>touch</code> Creates a new empty file and can also change timestamps on existing files. Useful for creating empty files quickly.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ touch main.cpp
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/tr.html">
+                <h5>tr</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/tree.html">
+                <h5>tree</h5>
+            </a>
+            <p>Short description of the command</p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/units.html">
+                <h5>units</h5>
+            </a>
+            <p><code>units</code> converts quantities from one unit to another unit. It can be used interactively or non-interactively.</p>
+<p>To use interactively, type units into the command prompt:</p>
+<div class="highlight"><pre><span></span>$ units
+</pre></div>
+<p>To use non-interactively:</p>
+<div class="highlight"><pre><span></span>$ units <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span><span class="s1">&#39;from-unit&#39;</span> <span class="s1">&#39;to-unit&#39;</span><span class="o">]</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/wget.html">
+                <h5>wget</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/tools/xclip.html">
+                <h5>xclip</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+    </div>
+    
+    <h3>Toys</h3>
+    <div class="row">
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/toys/asciiquarium.html">
+                <h5>asciiquarium</h5>
+            </a>
+            <p><code>asciiquarium</code> is a script that doubles as a cool screensaver for the terminal.</p>
+<p>To start <code>asciiquarium</code>, simply type the following:</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ asciiquarium
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/toys/asciiview.html">
+                <h5>asciiview</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/toys/cal.html">
+                <h5>cal</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/toys/cmatrix.html">
+                <h5>cmatrix</h5>
+            </a>
+            <p><code>cmatrix</code> is a program that simulate the cool scrolling lines from the movie 'The Matrix'.</p>
+<p>To start <code>cmatrix</code>, simply type the following:</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ sudo apt install cmatrix
+$ cmatrix
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/toys/cowsay.html">
+                <h5>Cowsay</h5>
+            </a>
+            <p><code>cowsay</code> is a program that shows a ASCII picture of a cow saying a message inside the terminal.</p>
+<p>To use <code>cowsay</code>, simply type:</p>
+<div class="highlight"><pre><span></span>$ cowsay <span class="s2">&quot;your message&quot;</span>
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/toys/fortune.html">
+                <h5>fortune</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/toys/linuxlogo.html">
+                <h5>linuxlogo</h5>
+            </a>
+            <p><code>linuxlogo</code>  is a Linux command line utility that generates a color ANSI picture of logo with a few system information.</p>
+<p>To use <code>linuxlogo</code>, simply type:</p>
+<div class="highlight"><pre><span></span>$ sudo apt install linuxlogo
+$ linuxlogo
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/toys/sl.html">
+                <h5>sl</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/toys/snake.html">
+                <h5>snake</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <a href="/static/toys/t.html">
+                <h5>t</h5>
+            </a>
+            <p>TODO: Add documentation for this command by submitting a pull request.
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>*short* example of <span class="nb">command</span> usage and output
+</pre></div>
+
+        </div>
+        
+    </div>
+    
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

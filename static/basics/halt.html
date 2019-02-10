@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - halt</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>halt</h2>
+<p><code>halt</code>, together with <code>poweroff</code>, <code>reboot</code> are commands you can run as root to stop the system hardware. Specifically, <code>halt</code> instructs the hardware to stop all CPU functions. These commands require superuser privileges. If you are not logged in as root, you will need to prefix the command with <code>sudo</code> or the signal will not be sent.</p>
+<div class="highlight"><pre><span></span>$ sudo halt
+<span class="o">[</span>sudo<span class="o">]</span> password <span class="k">for</span> xxx:
+</pre></div>
+<hr>
+<h3>Options/Examples</h3>
+<h4><code>halt -p</code></h4>
+<p>Invoking <code>halt</code> with option <code>-p</code> would instruct the <code>halt</code> command to instead behave as <code>poweroff</code>. <code>poweroff</code> is a terminal command that would allow a system administrator to shutdown the system.</p>
+<div class="highlight"><pre><span></span>$ poweroff --help
+poweroff <span class="o">[</span>OPTIONS...<span class="o">]</span>
+
+Power off the system.
+
+     --help      Show this <span class="nb">help</span>
+     --halt      Halt the machine
+  -p --poweroff  Switch off the machine
+     --reboot    Reboot the machine
+  -f --force     Force immediate halt/power-off/reboot
+  -w --wtmp-only Don<span class="s1">&#39;t halt/power-off/reboot, just write wtmp record</span>
+<span class="s1">  -d --no-wtmp   Don&#39;</span>t write wtmp record
+     --no-wall   Don<span class="err">&#39;</span>t send wall message before halt/power-off/reboot
+</pre></div>
+<h4><code>halt --verbose</code></h4>
+<p>It would output slightly more verbose messages when rebooting, which can be useful for debugging problems with shutdown.</p>
+<h4><code>halt --help</code></h4>
+<p>It would print a short help text and exit.</p>
+<div class="highlight"><pre><span></span>halt <span class="o">[</span>OPTIONS...<span class="o">]</span>
+
+Halt the system.
+
+     --help      Show this <span class="nb">help</span>
+     --halt      Halt the machine
+  -p --poweroff  Switch off the machine
+     --reboot    Reboot the machine
+  -f --force     Force immediate halt/power-off/reboot
+  -w --wtmp-only Don<span class="s1">&#39;t halt/power-off/reboot, just write wtmp record</span>
+<span class="s1">  -d --no-wtmp   Don&#39;</span>t write wtmp record
+     --no-wall   Don<span class="err">&#39;</span>t send wall message before halt/power-off/reboot
+</pre></div>
+<h3>Exit Status</h3>
+<p>On success, 0 is returned, a non-zero failure code otherwise.</p>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

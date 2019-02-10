@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - objdump</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>objdump</h2>
+<p><!-- one line explanation would go here -->
+<code>objdump</code> gives you information about an object file or executable.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ gcc -std<span class="o">=</span>c99 -c hello.c
+$ objdump -r hello.o &gt; hello_relocation.info
+</pre></div>
+<hr>
+<p><code>objdump</code> can be really useful when you want to understand more about the internals of executable and linkable format (ELF) files or disassemble an executable (output its corresponding assembly code).</p>
+<h3>Useful Options / Examples</h3>
+<p>For the following examples, we'll be using the C file <code>add.c</code> compiled with the C99 standard and shown below.</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<div class="highlight"><pre><span></span>$ gcc -std<span class="o">=</span>c99 -c add.c
+$ gcc -std<span class="o">=</span>c99 add.c -o add
+$ ls <span class="p">|</span> grep add
+add
+add.c
+add.o
+</pre></div>
+<p>The <code>-std=c99</code> flag tells <code>gcc</code> to compile with the C99 standard, and the <code>-c</code> flag tells it to make an object file.</p>
+<h3><code>objdump -d</code></h3>
+<p><code>objdump -d</code> disassembles the executable sections of the argument executable or object file. In other words, it shows you the assembly code equivalent of the actual machine code that your CPU runs.</p>
+<div class="highlight"><pre><span></span>$ objdump -d add &gt; disassembly
+$ head -n <span class="m">10</span> disassembly
+
+add:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+<span class="m">0000000000400390</span> &lt;_init&gt;:
+  <span class="m">400390</span>:   <span class="m">48</span> <span class="m">83</span> ec <span class="m">08</span>             sub    <span class="nv">$0</span>x8,%rsp
+  <span class="m">400394</span>:   <span class="m">48</span> 8b <span class="m">05</span> 5d 0c <span class="m">20</span> <span class="m">00</span>    mov    0x200c5d<span class="o">(</span>%rip<span class="o">)</span>,%rax        <span class="c1"># 600ff8 &lt;_DYNAMIC+0x1d0&gt;</span>
+  40039b:   <span class="m">48</span> <span class="m">85</span> c0                <span class="nb">test</span>   %rax,%rax
+</pre></div>
+<p>The output is extensive, so we only show the first 10 lines here. The first line tells you the file format of the input file and the assembly language used. In this case, the file format is ELF-64, and the assembly language is x86-64.</p>
+<p>Next, you'll see the disassembled code. Each section of disassembly begins with a line that tells you which section of your file that the following code is of. In the limited output above, we're looking at a part of the <code>.init</code> section.</p>
+<p>Each section of disassembly consists of several columns.</p>
+<p>The first column tells you the address that the code will be located at runtime.</p>
+<p>The second tells you the machine code in hex of the corresponding instruction.</p>
+<p>The next two columns have the assembly language equivalent of the machine code.</p>
+<h3><code>objdump -t</code></h3>
+<p><code>objdump -t</code> displays the symbol table of your argument file.</p>
+<div class="highlight"><pre><span></span>$ objdump -t add.o
+
+add.o:     file format elf64-x86-64
+
+SYMBOL TABLE:
+<span class="m">0000000000000000</span> l    df *ABS*  <span class="m">0000000000000000</span> add.c
+<span class="m">0000000000000000</span> l    d  .text  <span class="m">0000000000000000</span> .text
+<span class="m">0000000000000000</span> l    d  .data  <span class="m">0000000000000000</span> .data
+<span class="m">0000000000000000</span> l    d  .bss   <span class="m">0000000000000000</span> .bss
+<span class="m">0000000000000004</span> l     O .data  <span class="m">0000000000000004</span> j.1703
+<span class="m">0000000000000000</span> l    d  .note.GNU-stack    <span class="m">0000000000000000</span> .note.GNU-stack
+<span class="m">0000000000000000</span> l    d  .eh_frame  <span class="m">0000000000000000</span> .eh_frame
+<span class="m">0000000000000000</span> l    d  .comment   <span class="m">0000000000000000</span> .comment
+<span class="m">0000000000000000</span> g     O .data  <span class="m">0000000000000004</span> i
+<span class="m">0000000000000000</span> g     F .text  000000000000001c main
+</pre></div>
+<p>The symbol table has five columns.</p>
+<p>The first displays the corresponding symbol's address.</p>
+<p>The second tells you the flags that are enabled for the symbol. In the output above, some of the flags are separated by whitespace, making them seem like different columns, but that's because some flags are disabled. Some examples of flags are: <code>l</code> for local, <code>g</code> for global, <code>d</code> for debugging, <code>f</code> for file, <code>F</code> for function, and <code>O</code> for object. There are a number of other flags, but we won't cover all of them here.</p>
+<p>The third column tells you where the symbol lives. For example, <code>.data</code> means the data segment, <code>text</code> means the text segment, and <code>*ABS*</code> means absolute (the symbol doesn't live anywhere in particular).</p>
+<p>The fourth shows you the symbol's size or alignment.</p>
+<p>The fifth tells you the symbol's name.</p>
+<h3><code>objdump -r</code></h3>
+<p><code>objdump -r</code> displays the relocation table of your argument file. This command is most useful with object files.</p>
+<div class="highlight"><pre><span></span>$ objdump -r add.o
+
+add.o:     file format elf64-x86-64
+
+RELOCATION RECORDS FOR <span class="o">[</span>.text<span class="o">]</span>:
+OFFSET           TYPE              VALUE 
+<span class="m">0000000000000006</span> R_X86_64_PC32     i-0x0000000000000004
+000000000000000c R_X86_64_PC32     .data
+
+
+RELOCATION RECORDS FOR <span class="o">[</span>.eh_frame<span class="o">]</span>:
+OFFSET           TYPE              VALUE 
+<span class="m">0000000000000020</span> R_X86_64_PC32     .text
+</pre></div>
+<p>The relocation table has three columns.</p>
+<p>The first column tells you the offset where the relocated symbol address should go.</p>
+<p>The second tells you the type of the symbol.</p>
+<p>The third tells you the symbol and the offset that should be added to it after resolving the symbol's new location.</p>
+<p>The <code>-r</code> flag can be used with the <code>-d</code> flag to get the relocation information interspersed in the disassembly.</p>
+<div class="highlight"><pre><span></span>$ objdump -dr add.o
+
+add.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+<span class="m">0000000000000000</span> &lt;main&gt;:
+   <span class="m">0</span>:   <span class="m">55</span>                      push   %rbp
+   <span class="m">1</span>:   <span class="m">48</span> <span class="m">89</span> e5                mov    %rsp,%rbp
+   <span class="m">4</span>:   8b <span class="m">15</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>       mov    0x0<span class="o">(</span>%rip<span class="o">)</span>,%edx        <span class="c1"># a &lt;main+0xa&gt;</span>
+                        <span class="m">6</span>: R_X86_64_PC32    i-0x4
+   a:   8b <span class="m">05</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>       mov    0x0<span class="o">(</span>%rip<span class="o">)</span>,%eax        <span class="c1"># 10 &lt;main+0x10&gt;</span>
+                        c: R_X86_64_PC32    .data
+   <span class="m">10</span>:  <span class="m">01</span> d0                   add    %edx,%eax
+   <span class="m">12</span>:  <span class="m">89</span> <span class="m">45</span> <span class="nb">fc</span>                mov    %eax,-0x4<span class="o">(</span>%rbp<span class="o">)</span>
+   <span class="m">15</span>:  b8 <span class="m">00</span> <span class="m">00</span> <span class="m">00</span> <span class="m">00</span>          mov    <span class="nv">$0</span>x0,%eax
+   1a:  5d                      pop    %rbp
+   1b:  c3                      retq
+</pre></div>
+<h3>Other flags</h3>
+<p>There are a number of other flags that you can use with <code>objdump</code> to get more information about an object file. Because there are so many, we only covered the most useful ones here. You can read about the rest <a href="https://linux.die.net/man/1/objdump">here</a>.</p>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

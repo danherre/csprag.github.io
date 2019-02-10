@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - id</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>id</h2>
+<p><code>id</code> is a command that prints out the effective and real user and group ids.
+<!-- one line explanation would go here --></p>
+<!-- minimal example -->
+
+<p>The syntax for the command is:</p>
+<div class="highlight"><pre><span></span>id <span class="o">[</span>option<span class="o">(</span>s<span class="o">)]</span>
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>id</code></h4>
+<div class="highlight"><pre><span></span>id <span class="o">[</span>option<span class="o">(</span>s<span class="o">)]</span>
+id <span class="o">[</span>option<span class="o">(</span>s<span class="o">)]</span> <span class="o">[</span>USERNAME<span class="o">]</span>
+</pre></div>
+<ul>
+<li>The <code>id</code> command prints out information for the current user. However, it is possible to specify a different user by appending their name to the end of the command.</li>
+</ul>
+<p>Simply entering <code>id</code> prints out all the information about the current user.</p>
+<div class="highlight"><pre><span></span>$ id
+<span class="nv">uid</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>biswash<span class="o">)</span> <span class="nv">gid</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>biswash<span class="o">)</span> <span class="nv">groups</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>biswash<span class="o">)</span>,4<span class="o">(</span>adm<span class="o">)</span>,24<span class="o">(</span>cdrom<span class="o">)</span>,27<span class="o">(</span>sudo<span class="o">)</span>,30<span class="o">(</span>dip<span class="o">)</span>,46<span class="o">(</span>plugdev<span class="o">)</span>,113<span class="o">(</span>lpadmin<span class="o">)</span>,128<span class="o">(</span>sambashare<span class="o">)</span>,999<span class="o">(</span>vboxsf<span class="o">)</span>
+</pre></div>
+<h4><code>id -u</code></h4>
+<p>The <code>-u</code> flag prints out the current user ID</p>
+<div class="highlight"><pre><span></span>$ id -u
+<span class="m">1000</span>
+</pre></div>
+<h4><code>id -g</code> &amp;&amp; <code>id -G</code></h4>
+<p>The <code>-g</code> flag prints out the current group id, whereas the <code>-G</code> flag prints out the id of all groups.</p>
+<div class="highlight"><pre><span></span>$ id -g
+<span class="m">1000</span>
+$ id -G
+<span class="m">1000</span> <span class="m">4</span> <span class="m">24</span> <span class="m">27</span> <span class="m">30</span> <span class="m">46</span> <span class="m">113</span> <span class="m">128</span> <span class="m">999</span>
+</pre></div>
+<h4><code>id -n</code></h4>
+<p>The <code>-n</code> flag is used in conjuction with the <code>-u</code> and the <code>-g</code> flags to find the name of the user or group rather than their id.</p>
+<div class="highlight"><pre><span></span>$ id -un
+biswash
+$ id -gn
+biswash
+$ id -Gn
+biswash adm cdrom sudo dip plugdev lpadmin sambashare vboxsf
+</pre></div>
+<ul>
+<li>The main reason to use the id command is to find to which group an user belongs to. This is helpful when switching between users with different permissions and settings.</li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

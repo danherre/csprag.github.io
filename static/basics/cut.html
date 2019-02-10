@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - cut</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>cut</h2>
+<p><code>cut</code> is for cutting sections from each line of files and writing the result to standard output.</p>
+<div class="highlight"><pre><span></span>$ cut <span class="o">[</span>OPTIONS<span class="o">]</span> <span class="o">[</span>FILE<span class="o">]</span>
+</pre></div>
+<hr>
+<p>It can be used to cut parts of a line by byte position, character and delimiter. It can also be used to cut data from file formats like CSV.
+With no FILE, or when FILE is -, read standard input.</p>
+<h4>Useful Options / Examples</h4>
+<div class="highlight"><pre><span></span><span class="p">|</span> Command <span class="p">|</span>                <span class="p">|</span> Description <span class="p">|</span>
+
+<span class="p">|</span> -b, --bytes<span class="o">=</span>LIST <span class="p">|</span>       <span class="p">|</span> <span class="k">select</span> only these bytes <span class="p">|</span>
+
+<span class="p">|</span> -c, --characters<span class="o">=</span>LIST <span class="p">|</span>  <span class="p">|</span> <span class="k">select</span> only these characters <span class="p">|</span>
+
+<span class="p">|</span> -d, --delimiter<span class="o">=</span>DELIM <span class="p">|</span>  <span class="p">|</span> use DELIM instead of TAB <span class="k">for</span> field  delimeter <span class="p">|</span>                               
+
+<span class="p">|</span> -f, --fields<span class="o">=</span>LIST <span class="p">|</span>      <span class="p">|</span> <span class="k">select</span> only these fields<span class="p">;</span>  also print any 
+                            that contains no delimiter character, unless
+                            the -s option is specified <span class="p">|</span>
+</pre></div>
+<p>For the following example, we will assume this is our csv file (people.csv)</p>
+<div class="highlight"><pre><span></span>Bill, Jones, Male, <span class="m">20</span>
+Sally, Smith, Female, <span class="m">21</span>
+Joe, Morgan, Male, <span class="m">31</span>
+Alexandra, Smith, Female, <span class="m">71</span>
+</pre></div>
+<h4>Example command</h4>
+<div class="highlight"><pre><span></span>$ cut -d <span class="s1">&#39;,&#39;</span> -f <span class="m">1</span> people.csv
+Bill
+Sally
+Joe
+Alexandra
+
+<span class="c1">##A cool thing we can do is redirect these changes to a new file##</span>
+$ cut -d <span class="s1">&#39;,&#39;</span> -f <span class="m">1</span> people.csv &gt; newPeople.csv
+</pre></div>
+<h5>Break it down</h5>
+<p>Here we took the original csv file, which had random peoples first name, last name, gender, and age. We wanted only the first name. To do this we use cut and specify a delimeter with <code>-d ','</code> to specify we want to read up until the comma. To then tell cut we only want the first row of information we use <code>-f 1</code>. Lastly we specify the file that we want to cut from. A smart thing to do is use <code>cat | cut ....</code> so that changes can be seen before they are made. Also, the changes can be redirected to a new file using the <code>&gt;</code> operator and the end of the whole statement.</p>
+<h4>Example command</h4>
+<div class="highlight"><pre><span></span>$ cut -c <span class="s1">&#39;1,2,3&#39;</span> people.csv
+Bil
+Sal
+Joe
+Ale
+</pre></div>
+<h5>Break it down</h5>
+<p>Here cut use the cut command with the <code>-c</code> flag. Using this with <code>1,2,3</code> specifys that we want the first, second, and third character on each line. Once again it is always wise to do <code>cat | cut ...</code> so that changes can be seen before they are saved.</p>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - passwd</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>passwd</h2>
+<p><code>passwd</code> is used to change the password of a user account
+<!-- one line explanation would go here --></p>
+<!-- minimal example -->
+
+<div class="highlight"><pre><span></span>$ passwd <span class="o">[</span>OPTION<span class="o">]</span> <span class="o">[</span>USER<span class="o">]</span>
+</pre></div>
+<p>--</p>
+<h3>Useful Options / Examples</h3>
+<p>A user can run <code>passwd</code> to change their own password and a superuser can use <code>passwd</code> to change another user's password.</p>
+<h4><code>passwd</code></h4>
+<div class="highlight"><pre><span></span>$ passwd
+Changing password <span class="k">for</span> <span class="o">[</span>USER<span class="o">]</span>.
+<span class="o">(</span>current<span class="o">)</span> UNIX password:
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li><code>passwd</code> with no options or user specified will change the password of the user running the command.</li>
+</ul>
+<h4><code>sudo passwd [OTHER_USER]</code></h4>
+<div class="highlight"><pre><span></span>$ sudo passwd other
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>If you have superuser privileges, you can modify the password of other users.</li>
+<li>Prefix the command with <code>sudo</code> to run it as a superuser.</li>
+<li>This will allow you to change the password for another user and not be prompted for their password.</li>
+</ul>
+<h4><code>sudo passwd -S [OTHER_USER]</code></h4>
+<div class="highlight"><pre><span></span>$ sudo passwd -S other
+other P <span class="m">10</span>/17/2017 <span class="m">0</span> <span class="m">99999</span> <span class="m">7</span> -1
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>The <code>-S</code> option displays password information for a given user.</li>
+<li>The 7 fields correspond to the following values:<ol>
+<li>User's login name</li>
+<li>Password usability ('L' if locked, 'NP' if there is no password, 'P' if there is a usable password)</li>
+<li>Date of last password change</li>
+<li>Minimum password age (days)</li>
+<li>Maximum password age (days)</li>
+<li>Warning period before a required password change</li>
+<li>Number of days to change a password after the maximum password age is reached</li>
+</ol>
+</li>
+</ul>
+<h4><code>sudo passwd -l [OTHER_USER]</code></h4>
+<div class="highlight"><pre><span></span>$ sudo passwd -l other
+passwd: password expiry information changed.
+$ sudo passwd -S other
+other L <span class="m">10</span>/17/2017 <span class="m">0</span> <span class="m">99999</span> <span class="m">7</span> -1
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>The <code>-l</code> option allows a superuser to lock another user's account by disabling their password.</li>
+<li>To have their password unlocked, a user will need to contact a superuser to unlock it.</li>
+<li>User's who have had their password locked can still login using other authentication methods (SSH).</li>
+</ul>
+<h4><code>sudo passwd -u [OTHER_USER]</code></h4>
+<div class="highlight"><pre><span></span>$ sudo passwd -u other
+passwd: password expiry information changed.
+$ sudo passwd -S other
+other P <span class="m">10</span>/17/2017 <span class="m">0</span> <span class="m">99999</span> <span class="m">7</span> -1
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>The <code>-u</code> option allows a superuser to unlock another user's account by enabling their previous password.</li>
+</ul>
+<h4><code>sudo passwd -d [OTHER_USER]</code></h4>
+<div class="highlight"><pre><span></span>$ sudo passwd -d other
+passwd: password expiry information changed.
+$ sudo passwd -S other
+other NP <span class="m">10</span>/17/2017 <span class="m">0</span> <span class="m">99999</span> <span class="m">7</span> -1
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>The <code>-d</code> option allows a superuser to delete another user's password.</li>
+<li>This will disable logins for a users account, without disabling their account completely.</li>
+</ul>
+<h4><code>sudo passwd -e [OTHER_USER]</code></h4>
+<div class="highlight"><pre><span></span>$ sudo passwd -e other
+passwd: password expiry information changed.
+$ sudo passwd -S other
+other P <span class="m">01</span>/01/1970 <span class="m">0</span> <span class="m">99999</span> <span class="m">7</span> -1
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>The <code>-e</code> option allows a superuser to expires another user's account which will require that user to change their password.</li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

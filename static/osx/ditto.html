@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - ditto</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>Ditto</h2>
+<p><code>ditto</code> is an OSX command that copies the entire contents of a directory to another, new location.</p>
+<div class="highlight"><pre><span></span>$ ditto /old/directory/ /new/directory/
+</pre></div>
+<hr>
+<h3>Details</h3>
+<p><code>Ditto</code> perserves file resources forks and metadata, in addition to ownership attributes. This ensures a more exact copy than cp. <code>Ditto</code> can also be used to copy a file or direct to a source that doesn't exist - in that case, <code>ditto</code> will automatically create the source for the user.</p>
+<h3>Useful Options / Examples</h3>
+<h4><code>-V</code></h4>
+<div class="highlight"><pre><span></span>$ ls old
+bla.txt
+$ ls new 
+$ ditto -V old new
+&gt;&gt;&gt;copying old
+copying file ./bla.txt ...
+<span class="m">10</span> bytes <span class="k">for</span> ./bla.txt
+$ ls old
+bla.txt
+$ ls new
+bla.txt
+</pre></div>
+<h4>Break it down</h4>
+<p><code>-V</code> stands for verbose, and is a flag that prints 2 lines for every file being copied: one line displaying the name of the file, and one displaying the file size.</p>
+<h4><code>--norsrc</code></h4>
+<div class="highlight"><pre><span></span>$ ditto --nosrc /old /new
+</pre></div>
+<h4>Break it down</h4>
+<p>The <code>--norsrc</code> flag allows you to copy files and directories without copying their accompanying metadata and resource forks.</p>
+<h4><code>--password</code></h4>
+<div class="highlight"><pre><span></span>$ ditto --password /old /new
+</pre></div>
+<h4>Break it down</h4>
+<p>The <code>--password</code> flag allows the user to copy password protected zip archives. <code>Ditto</code> will prompt a user for a password if the --password flag is included, and will print an error message if it is not specified where it is needed.</p>
+<h4><code>--nopreserveHFSCompression</code></h4>
+<div class="highlight"><pre><span></span>$ ditto --nopreserveHFSCompression /old /new
+</pre></div>
+<h4>Break it down</h4>
+<p>The <code>--nopreserveHFSCompression</code> flag deviates from <code>ditto's</code> default operations, causing the compression of files compressed using HFS compression to not be preserved. It is only supported on Mac OSX 10.6 or later, and is one reason to use ditto over cp.</p>
+<h4><code>--zlibCompressionLevel</code></h4>
+<div class="highlight"><pre><span></span>$ ditto --zLibCompressionLevel <span class="m">5</span> /old /new
+</pre></div>
+<h4>Break it down</h4>
+<p>The <code>--zLibCompressionLevel</code> flag allows the user to specify a compression level from 0 to 9 when copying a PKZip archive. 0 represents no compression, whereas 9 is the most compression possible. Higher compression levels will generally take more time to complete. If no level is specified, ditto will use the default compression level set in zlib.</p>
+<h4><code>-X</code></h4>
+<div class="highlight"><pre><span></span>$ ditto -X /old /new
+</pre></div>
+<h4>Break it down</h4>
+<p>The <code>-X</code> flag is used to prevent descending into directories with a different device id when copying multiple directories. This would be useful if you only wanted to copy files from one device, say, a computer, and did not want to copy over files on an external harddrive.</p>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

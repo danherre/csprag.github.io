@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - Caen-Connect-Tutorial</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>Caen Connect Tutorial</h2>
+<p>Caen Connect Tutorial walks through with you the way to sync your local project folder to your remote CAEN (Linux) machine instantly using SFTP, so you could ssh into CAEN, and do the stuff that you want CAEN to do.</p>
+<hr>
+<p><strong><em>NOTE: BEFORE you read the rest of the tutorial, MAKE SURE that you are a student attending the University of Michigan, Ann Arbor (preferably a College of Engineering student). Though this tutorial may also apply to other similar situations, it will be your responbility to learn to adapt. Cheers =P</em></strong></p>
+<p><img src="http://mobileapps.its.umich.edu/sites/all/themes/umzentwo/images/umich-app-icon.png" alt="Umich" style="width: 100px; height: 100px;"><br></p>
+<h2>Introduction</h2>
+<p><strong>Caen Connect Tutorial</strong> walks through with you the way to sync your local project folder to your remote CAEN (Linux) machine <strong>instantly</strong> using <strong>SFTP</strong>, so you could ssh into CAEN, and do the stuff that you want CAEN to do.</p>
+<h2>Possible Cases of Usage</h2>
+<p>Possible scenarios of use including:</p>
+<ul>
+<li>You are sitting in your dorm, developing your EECS484 project 01/02/03/04, and you want to develop <strong>locally</strong> using you favorite text editor (let's say <a href="https://www.sublimetext.com">sublime text</a>) due to its reach functionality in auto-completion, syntax highlighting, auto-correction, auto-write-the-whole-project-so-I-could-just-sit-there-and-do-nothing, etc. But, sadly, you can only run your code on CAEN since only CAEN can run <strong><em>sqlplus</em></strong>. You are too lazy to get out of the couch, go to duder/BBB and get a CAEN machine, and start working. But you have to get your code there. Shoot!</li>
+<li>You are, again, writing your C++ code for EECS281/482/483/4xx projects <strong>locally</strong>. At the end of the spec, the instructor want you to run your code in this specific version of <strong><em>g++</em></strong> (let's say 4.8.5) on a Linux machine (possibly using some Linux system calls so a Mac/PC is simply not going to get you there). But you don't have Linux installed locally. Even if you do, you find that the <strong>g++</strong> version is 5.1.5 and there is no way for you to downgrade it. ONLY CAEN runs <strong>g++</strong> 4.8.5. Shoot!</li>
+<li>You have a remote Linux machine that is so so so powerful, why installing my own Linux? But how do I get my code up there? Shoot!</li>
+</ul>
+<h2>Make It Happen</h2>
+<p>Now, to make this happen, all you need is a <a href="https://www.sublimetext.com">sublime text</a> editor (More text editor options are to come as soon as I figure them out).</p>
+<h4>Some Preparations</h4>
+<ol>
+<li>Go ahead to <a href="https://www.sublimetext.com">www.sublimetext.com</a> to get the latest version of sublime text installed on your machine (Mac/PC/Linux). Note that it doesn't matter whether you install version 2 or 3. They all works. (Skip if you already have done it in the past.)</li>
+<li>Install <strong>Package Control</strong>. <a href="https://packagecontrol.io/installation">Here</a>'s how you could do it, or you could google it by yourself. (Skip if you already have done it in the past.)</li>
+<li>Hit <code>Cmd-Shift-P</code> if you are working on a Mac (<code>Ctrl-Shift-P</code> on PC) to open up the prompt. Type <code>Install Package</code> and hit <code>Enter</code>. In the next prompt, type <strong><code>SFTP</code></strong> and hit <code>Enter</code>. The installation will perform automatically. Restart your editor after this.</li>
+</ol>
+<h4>Real Magic</h4>
+<ol>
+<li><p><strong>Configurations</strong></p>
+<p>Open up your <strong>root/parent project directory</strong> (where you put all your project folders for this course) and create a new json file named <strong><code>sftp-config.json</code></strong>. Open it up, and copy-paste in <a href="https://github.com/lxieyang/caen-connect-tutorial/blob/master/sftp-config.example.json">this</a> piece of code.</p>
+<p><img src="https://image.ibb.co/bNvvfa/json.png" style="width: 100%" alt="sync"></p>
+</li>
+</ol>
+
+<pre><code>Then, change all instances of `your-uniqname`s to your actual **uniqname**, change all instances of `your-password` to your **CAEN password**, change all instances of `path/to/your/project/folder` to where you want to put your project on CAEN. Now, go ahead and save it.
+
+A sample config file can also be found here: [sftp-config.example.json](https://raw.githubusercontent.com/lxieyang/caen-connect-tutorial/master/sftp-config.example.json)
+
+To explain a bit:
+- `upload_on_save` will automatically upload the entire root/parent project folder to CAEN.
+
+- `user` specifies whose CAEN account to upload your project to
+
+- `password` specifies your password to CAEN
+
+- `remote_path` specifies where your project folder is located on CAEN
+
+- More configurations could be found here: [Sublime SFTP Settings](https://wbond.net/sublime_packages/sftp/settings#Settings)
+
+</code></pre>
+<ol>
+<li><p><strong>Upload on save</strong></p>
+<p>Now, congratulations! You are almost there! Open up your root/parent project directory in sublime text. Actually create a project folder to hold all your project files (let's say <code>eecs484-project-01</code>). Change directory into it, create a file in it, do some edits, and click <strong>File =&gt; Save</strong> (or <strong><code>Cmd-S</code></strong> in Mac). This will automatically upload the file you just created to CAEN. Automatically. Automatically. <strong><em>(No need to email yourself the code and download it from CAEN / push your code to github and pull it on CAEN / copy your file into a flash drive and stick it onto a CAEN machine / etc)</em></strong>.</p>
+</li>
+<li><p><strong>Sync Local -&gt; Remote</strong></p>
+<p>Note that <code>upload_on_save</code> will dumbly upload each file you saved to CAEN. But if you delete it / rename it locally, the version on CAEN persists. This may cause serious problems like <strong><em>multiple includes, naming conflict, etc</em></strong>. To save, you could use the <strong>Sync</strong> functionality of <strong>Sublime SFTP</strong>. To do this: <strong>Right click</strong> on your project folder, select <strong>SFTP/FTP</strong> =&gt; <strong>Sync Local -&gt; Remote</strong>. It's illustrated below:</p>
+<p><img src="https://image.ibb.co/cQ2nrF/sync.jpg" style="width: 100%" alt="sync"></p>
+<p>Go ahead and select <code>Yes</code> when asked for confirmation. This syncs the local folder with the remote one on CAEN, meaning, everything in your project folder on CAEN machine is now <strong>identical</strong> to the ones in your local project folder. Yay!</p>
+</li>
+<li><p><strong>Run your project on CAEN</strong></p>
+<p>Now is the time you <strong>ssh</strong>(remote log in) onto CAEN Linux and run your porjects! To remote log in your CAEN Linux account, please type the following script into your terminal:</p>
+<div class="highlight"><pre><span></span>ssh your-uniqname@login-course.engin.umich.edu
+</pre></div>
+<p>Please change <code>your-uniqname</code> to your actual <strong>uniqname</strong>. I assume you could take it from here =P</p>
+</li>
+<li><p><strong>Other possibilities</strong></p>
+<p>Note that there are other possibilities to explore with <strong><em>Sublime SFTP</em></strong>. What I gave you is just the <strong><a href="https://en.wikipedia.org/wiki/Minimum_viable_product">MVP</a></strong>, so you could get going on the rest of your journey.</p>
+</li>
+</ol>
+<h2>Things to Keep in Mind</h2>
+<h4>Version Control</h4>
+<p>Please do not forget to do version controls, such as <a href="https://en.wikipedia.org/wiki/Git">git</a>, when working with SFTP. Somewhere down the line, when you accidently chose to <strong><em>Sync Remote -&gt; Local</em></strong> or whatever operations that completely messes up / wipes out your local <strong>repo</strong> (notice that I use the word <strong>repo</strong> here, and you should know what I mean by that), <strong>git</strong> will save you. <strong><em>Please refrain from any impulse to curse me if you don't have your project git-ted. I told you to git it. I told you.</em></strong></p>
+<p>When using git, please add <code>sftp-config.json</code> to your <code>.gitignore</code> file before you commit to a remote repository <strong><em>(you don't want to expose your password to other folks right?)</em></strong>.</p>
+<h4>Your ideas?</h4>
+<p>Please shoot me an <a href="mailto:lxieyang@umich.edu">email</a> to remind me of anything you can think of that should be kept in mind when using SFTP. I would update this tutorial regularly and rest assured your contribution will be referenced and highlighted. I truly appreciate your effort in helping more folks live their life more easily.</p>
+<h2>Quick Start</h2>
+<p>To practice before messing up with your code/projects, you could:</p>
+<ul>
+<li>Instal Sublime Text</li>
+<li>Install Package Control</li>
+<li>Clone this repo, and change the filename <code>sftp-config.example.json</code> to <code>sftp-config.json</code>. Modify its content according to the instructions above.</li>
+<li><strong>Git</strong> the folder!</li>
+<li>Play with the stuff in <a href="https://github.com/lxieyang/caen-connect-tutorial/tree/master/sample-project"><code>sample-project</code></a> on CAEN! Best wishes!</li>
+</ul>
+<h2>Contributors</h2>
+<ul>
+<li>Special thanks to <strong>Joshua Agby</strong> for:<ul>
+<li>pointting out that the name of the plugin is actually <code>SFTP</code> instead of <code>Sublime SFTP</code>. So please type <code>SFTP</code> when searching for the plugin in your package control.</li>
+<li>providing an alternative <code>remote_path</code> in case of the <code>Folder does not exist</code> error, which is <code>/your-uniqname/path/to/your/project/folder</code>.</li>
+</ul>
+</li>
+</ul>
+<h2>About</h2>
+<p>I created this tutorial when I was TAing <strong>EECS484 Database Management Systems</strong> at the University of Michigan, Ann Arbor. I would expect less situations where we helped you modify the code and you want to run it right afterwards, so you <del>email the latest version to yourself, log into CAEN using VNC, open up a browser, download it, put into the right directory, and then</del> run it.</p>
+<p>Hope this could somehow make your life easier.</p>
+<p>Best,</p>
+<p><a href="http://lxieyang.github.io">Xieyang</a></p>
+<p>Last updated: 02/16/2017 19:49:59 EST</p>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

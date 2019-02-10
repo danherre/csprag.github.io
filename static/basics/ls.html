@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - ls</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>ls</h2>
+<p><code>ls</code> is used to <em>list</em> the contents of a directory. By default, <code>ls</code> will simply print file names.</p>
+<div class="highlight"><pre><span></span>$ ls
+directory file
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>ls -a</code></h4>
+<div class="highlight"><pre><span></span>$ ls -a
+.            ..           .hidden_file directory    file
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>The <code>-a</code> option asks <code>ls</code> to list <em>all</em> files. By convention, files or
+directories whose name start with a leading <code>.</code> are considered to be
+hidden files. Many times a program's configuration file is a hidden file
+(such as <code>~/.bashrc</code>). Another common use is for psuedo-temporary files
+that are important to the program but not the user (such as caches).</li>
+<li>The special directories <code>.</code> and <code>..</code> are created by the operating system.
+They refer to the current directory (<code>.</code>) and parent directory (<code>..</code>).
+It is this special directory that makes <code>./a.out</code> work, the leading <code>./</code>
+is just a convenient shortcut for specifying a complete path.</li>
+</ul>
+<h4><code>ls -l</code></h4>
+<div class="highlight"><pre><span></span>$ ls -l
+total <span class="m">8</span>
+-rwxr-xr-x  <span class="m">1</span> ppannuto  wheel   <span class="m">0</span> Mar  <span class="m">8</span> <span class="m">11</span>:38 executable_file
+-rw-r--r--  <span class="m">2</span> ppannuto  wheel   <span class="m">0</span> Mar  <span class="m">8</span> <span class="m">11</span>:38 hard_linked_file_ref1
+-rw-r--r--  <span class="m">2</span> ppannuto  wheel   <span class="m">0</span> Mar  <span class="m">8</span> <span class="m">11</span>:38 hard_linked_file_ref2
+-rw-r--r--  <span class="m">1</span> ppannuto  wheel   <span class="m">0</span> Mar  <span class="m">8</span> <span class="m">11</span>:38 regular_file
+lrwxr-xr-x  <span class="m">1</span> ppannuto  wheel  <span class="m">12</span> Mar  <span class="m">8</span> <span class="m">11</span>:38 symlink_to_regular_file -&gt; regular_file
+</pre></div>
+<h5>Break it down</h5>
+
+<pre><code>lrwxr-xr-x  1 ppannuto  wheel  12 Mar  8 11:38 symlink_to_regular_file -&gt; regular_file
+|---------  | |-------  |----  |-------------- |--------------------------------------
+|           | |         |      |               |
+|           | |         |      |               \- File Name: Normally just the name of
+|           | |         |      |                             the file. For symlinks, it
+|           | |         |      |                             will also print the target
+|           | |         |      |                             of the link
+|           | |         |      |
+|           | |         |      \- Last Modified Time: When this file was last touched
+|           | |         |
+|           | |         \- Group: This is the group that owns this file
+|           | |
+|           | \- Owner: This is the user who owns this file
+|           |
+|           \- Reference Count: This is the number of directory entries that point to
+|                               this file. Notice that it is 2 for the hard-linked files.
+|
+\- Permissions: 'l' means this file is a symbolic link, it is not actually a file, but
+                a pointer to the real file
+
+                Next are (r)ead, (w)rite, and e(x)ecute permissions. There are three
+                sets of these. The first is for the user that owns the file (ppannuto),
+                the next is for the group that owns the file (wheel), and the last is
+                for others (any user who is not the owner and is not in the wheel group).
+
+                The easiest way to change permissions is the chmod command. For example,
+                chmod +x file_name will add execute permissions to a file.</code></pre>
+<h4><code>ls -lSh /var/log | head -5</code></h4>
+<div class="highlight"><pre><span></span>$ ls -lSh <span class="p">|</span> head -5
+total <span class="m">53872</span>
+-rw-r--r--@  <span class="m">1</span> root             admin              11M Mar  <span class="m">8</span> <span class="m">11</span>:36 commerce.log
+-rw-r--r--@  <span class="m">1</span> ppannuto         staff              11M Mar  <span class="m">8</span> <span class="m">11</span>:36 install.log
+-rw-r--r--   <span class="m">1</span> root             wheel             <span class="m">1</span>.1M Mar  <span class="m">6</span> <span class="m">13</span>:53 corecaptured.log
+-rw-r-----@  <span class="m">1</span> root             admin             687K Mar  <span class="m">8</span> <span class="m">11</span>:49 system.log
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>The <code>-h</code> flag asks for "human readable" output. This is a common flag for
+many low-level tools. The effect is that the file size is printed as 11M
+instead of 11594838 bytes.</li>
+<li>The <code>-S</code> flag asks <code>ls</code> to sort the output by file size. This can be useful
+for finding big files taking up lots of space that shouldn't be around.</li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

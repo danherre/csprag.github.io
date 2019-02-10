@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - cp</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>cp</h2>
+<p><code>cp</code> is used to <em>copy</em> files or directories.</p>
+<div class="highlight"><pre><span></span>$ cp <span class="nb">source</span> destination
+$ cp file1.txt file2.txt
+$ cp -b file1.txt file2.txt
+$ cp -v file1.txt file2.txt
+$ cp * ~/Desktop
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>cp</code></h4>
+<div class="highlight"><pre><span></span>$ cp file1.txt file2.txt
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>This is the simplest use of <code>cp</code>. It copies the contents of <code>file1.txt</code> and puts
+it into <code>file2.txt</code>. If <code>file2.txt</code> does not exist, it creates it and puts the
+contents of <code>file1.txt</code> into it. If <code>file2.txt</code> does exist, it overwrites it.</li>
+</ul>
+<h4><code>cp -b</code></h4>
+<div class="highlight"><pre><span></span>$ cp -b file1.txt file2.txt
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>This flag makes a backup of the destination (if it exists) before overwriting it.
+The backup file will be called <code>file2.txt~</code>. If the destination does not exist, the
+flag doesn't do anything.</li>
+</ul>
+<h4><code>cp -r</code></h4>
+<div class="highlight"><pre><span></span>$ cp -r eecs280-w15 eecs280-w15-copy
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>The <code>-r</code> option will copy directories recursively. That means that if you want to
+make a copy of a folder, including its sub-folders, you must include the <code>-r</code> flag.
+In the example above, the command will copy over all of the contents of <code>eecs280-w15</code>
+into another folder called <code>eecs280-w15-copy</code>.</li>
+</ul>
+<h4><code>cp -u</code></h4>
+<div class="highlight"><pre><span></span>$ cp -u file1.txt file2.txt
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>This option ensures that the copy only occurs when the source file is newer than the
+destination file or when the destination file is missing. If <code>file2.txt</code> is updated 
+after <code>file1.txt</code>, the <code>file1.txt</code> will not be copied over to <code>file2.txt</code>. If <code>file2.txt</code>
+does not exist, it is created and will contain the contents of <code>file1.txt</code>.</li>
+</ul>
+<h4><code>cp -v</code></h4>
+<div class="highlight"><pre><span></span>$ cp -v file1.txt file2.txt
+<span class="s1">&#39;file1.txt&#39;</span> -&gt; <span class="s1">&#39;file2.txt&#39;</span>
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>This option explains what is being done during the copy process. It can be combined with
+other flags (like <code>-u</code>) so that it can be determined whether the copy occurred or
+not. If the copy did not occur, there will be no output.</li>
+</ul>
+<h4><code>cp file1.txt ~/Desktop/HW4</code></h4>
+<div class="highlight"><pre><span></span>$ cp file1.txt ~/Desktop/HW4
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>This usage of cp is very useful. Instead of copying directly to another file, a directory
+can be specified. <code>file1.txt</code> will be copied over to a newly created file in the specified
+directory.</li>
+</ul>
+<h4><code>cp * ~/Desktop/HW4</code></h4>
+<div class="highlight"><pre><span></span>$ cp * ~/Desktop/HW4
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>This usage of cp is similar to the example above. This time, all the files of the current
+folder will be copied to the specified directory. It is particularly useful if you wish
+to copy all files in one directory into another.</li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - less</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>less</h2>
+<p><code>less</code> is a tool to view a text file one screen at a time. You can navigate through the file with <code>j</code> or <code>RETURN</code>, and backwards with <code>k</code></p>
+<!-- minimal example -->
+
+<div class="highlight"><pre><span></span>$ less hello.txt
+<span class="c1"># displays hello.txt</span>
+q <span class="c1"># to quit</span>
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<p>Typing <code>/</code> within <code>less</code> allows you to forward search using regex
+and <code>?</code> allows you to backward search
+pressing <code>n</code> goes to the next item</p>
+<div class="highlight"><pre><span></span>$ less hello.txt
+........
+........
+........
+..git...
+.....git
+
+:/git
+<span class="c1"># git will be highlighted</span>
+n
+<span class="c1"># the next git is highlighted</span>
+</pre></div>
+<h1>Options:</h1>
+
+<pre><code>| Options |                         Description                        |
+|---------|:----------------------------------------------------------:|
+| -?      |                       Displays help.                       |
+| -I      |               Makes search case insensitive.               |
+| -M      |                    More detailed prompt.                   |
+| -S      | Long lines are chopped, and can be seen by side scrolling. |
+| -X      |      Contents of file remain on screen after exiting.      |</code></pre>
+<h1>Commands:</h1>
+
+<pre><code>| Command     |                              Description                             |
+|-------------|:--------------------------------------------------------------------:|
+| Space bar   |                               Next Page                              |
+| b           |                             Previous Page                            |
+| v           |                             Edit Content                             |
+| j           |                         or ↵ Enter  Next Line                        |
+| k           |                             Previous Line                            |
+| F           |              Follow Mode (for logs). Interrupt to abort.             |
+| g or &lt;      |                              First Line                              |
+| G or &gt;      |                               Last Line                              |
+| &lt;n&gt;G        |                               Line &lt;n&gt;                               |
+| /&lt;text&gt;     |      Forward Search for &lt;text&gt;. Text is interpreted as a regex.      |
+| ?&lt;text&gt;     |                        Backward Search like /                        |
+| n           |                           Next Search Match                          |
+| N           |                         Previous Search Match                        |
+| Esc u       |       Turn off Match Highlighting (see -g command line option)       |
+| -&lt;c&gt;        | Toggle option &lt;c&gt;, e.g., -i toggles option to match case in searches |
+| m&lt;c&gt;        |                             Set Mark &lt;c&gt;                             |
+| '&lt;c&gt;        |                            Go to Mark &lt;c&gt;                            |
+| = or Ctrl+G |                           File information                           |
+| :n          |                               Next file                              |
+| :p          |                             Previous file                            |
+| h           |             Help. This is presented with less, q to quit.            |
+| q           |                                 Quit                                 |</code></pre>
+<p><a href="https://en.wikipedia.org/wiki/Less_(Unix">Reference</a>)</p>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

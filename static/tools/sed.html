@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - sed</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>sed</h2>
+<p><code>sed</code> is a <em>stream editor</em> utility which supports insertion, deletion, and search and replace of streams then prints the edited stream to standard output.</p>
+<div class="highlight"><pre><span></span>$ sed OPTIONS... <span class="o">[</span>SCRIPT<span class="o">]</span> <span class="o">[</span>INPUTFILE...<span class="o">]</span>
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>sed 's/FindWord/ReplaceWord/' filename &gt; outfile</code></h4>
+<div class="highlight"><pre><span></span>$ sed <span class="s1">&#39;s/Nick/Josh/&#39;</span> names.txt &gt; out.txt
+</pre></div>
+<p>Changes first instances of 'Nick' in names.txt to 'Josh' and prints output to out.txt</p>
+<h4><code>sed 's/FindWord/ReplaceWord/g' filename &gt; outfile</code></h4>
+<div class="highlight"><pre><span></span>$ sed <span class="s1">&#39;s/Nick/Josh/g&#39;</span> names.txt &gt; out.txt
+</pre></div>
+<p>Changes all instances of 'Nick' in names.txt to 'Josh' and prints output to out.txt</p>
+<h4><code>sed 'nd' filename</code></h4>
+<div class="highlight"><pre><span></span>$ sed <span class="s1">&#39;5d&#39;</span> filename.txt
+</pre></div>
+<p>Deletes the 5th line from filename.txt</p>
+<h3>Options</h3>
+<table>
+<thead><tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--help</td>
+<td>Display a help message and exit.</td>
+</tr>
+<tr>
+<td>--version</td>
+<td>Output version information and exit.</td>
+</tr>
+<tr>
+<td>-n --quiet --silent</td>
+<td>Disables automatic printing.</td>
+</tr>
+<tr>
+<td>-e <em>script</em> --expression=<em>script</em></td>
+<td>Add commands in <em>script</em> to set of commands to be run when processing input.</td>
+</tr>
+<tr>
+<td>-f <em>script-file</em> --file=<em>script-file</em></td>
+<td>Add commands in <em>script-file</em> to set of commands to be run when processing input.</td>
+</tr>
+<tr>
+<td>-i[<em>SUFFIX</em>] --in-place[=<em>SUFFIX</em>]</td>
+<td>Specifies editing files in place.</td>
+</tr>
+<tr>
+<td>-l <em>N</em> --line-length=<em>N</em></td>
+<td>Specifies line-wrap length (default = 70).</td>
+</tr>
+<tr>
+<td>-posix</td>
+<td></td>
+</tr>
+<tr>
+<td>-b --binary</td>
+<td>Opens files in binary mode.</td>
+</tr>
+<tr>
+<td>--follow-symlinks</td>
+<td>Specifies that file passed in is a symbolic link.</td>
+</tr>
+<tr>
+<td>-E -r --regexp-extended</td>
+<td>Use extended regular expressions.</td>
+</tr>
+<tr>
+<td>-s --separate</td>
+<td>Consider files as separate streams.</td>
+</tr>
+<tr>
+<td>--sandbox</td>
+<td>Specifies that <code>sed</code> does not run any external programs.</td>
+</tr>
+<tr>
+<td>-u --unbuffered</td>
+<td>Buffer both input and output as minimally as practical.</td>
+</tr>
+<tr>
+<td>-z --null-data --zero-terminated</td>
+<td>Treat each line as null-terminated instead of newline-terminated.</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

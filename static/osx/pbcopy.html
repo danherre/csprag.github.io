@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - pbcopy</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>pbcopy</h2>
+<p><code>pbcopy</code> is used to copy text from the terminal into the clipboard.
+The Linux equivalent of <code>pbcopy</code> is <code>xclip</code>.</p>
+<div class="highlight"><pre><span></span>$ pbcopy &lt; example.txt
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>&lt;command&gt; | pbcopy</code></h4>
+<div class="highlight"><pre><span></span><span class="c1"># 1:</span>
+$ cat example.txt <span class="p">|</span> pbcopy
+
+<span class="c1"># 2:</span>
+$ <span class="nb">echo</span> <span class="s1">&#39;Hello World!&#39;</span> <span class="p">|</span> pbcopy
+
+<span class="c1"># 3:</span>
+$ grep hello helloworld.txt <span class="p">|</span> pbcopy
+
+<span class="c1"># 4:</span>
+$ ps aux <span class="p">|</span> pbcopy
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>All of the above examples direct the output of various commands into the clipboard
+with the combination of the pipe ( <code>|</code> ) and pbcopy</li>
+<li>1: Demonstrates another way to copy the contents of the file, example.txt, into the clipboard</li>
+<li>2: Copies 'Hello World!' into your clipboard buffer</li>
+<li>3: Pipes the grep results into the clipboard</li>
+<li>4: Pipes the <code>ps aux</code> results into the clipboard</li>
+</ul>
+<h4><code>pbcopy -pboard {general | ruler | find | font}</code></h4>
+<div class="highlight"><pre><span></span><span class="c1"># 1:</span>
+$ pbcopy -pboard general &lt; example.txt
+
+<span class="c1"># 2:</span>
+$ pbcopy -pboard ruler &lt; ruler.txt
+
+<span class="c1"># 3:</span>
+$ <span class="nb">echo</span> <span class="s1">&#39;hello&#39;</span> <span class="p">|</span> pbcopy -pboard find
+
+<span class="c1"># 4:</span>
+$ pbcopy -pboard font &lt; text.txt
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>The <code>-pboard</code> flag is used to specity which pasteboard to copy to (the default being general)</li>
+<li>1: The <code>general</code> option signals to the <code>-pboard</code> flag to copy to the standard clipboard.  In this case, the contents of example.txt are copied into the standard clipboard. Pressing cmd+v after this command will paste your copied text from example.txt.</li>
+<li>2: The <code>ruler</code> option signals to the <code>-pboard</code> flag to copy to the ruler clipboard.  In this command, the contents of ruler.txt are piped into the ruler clipboard.</li>
+<li>3: The <code>find</code> option signals to the <code>-pboard</code> flag to copy into find clipboard. Running cmd+f after this command will pre-populate the search bar with 'hello'.</li>
+<li>4: The <code>font</code> option signals to the <code>-pboard</code> flag to copy to the font clipboard. This command specifically, pipes the contents of test.txt into the font clipboard.  The font clipboard allows you to copy the font from a selection (in this case, test.txt),
+and paste it onto some other text.</li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

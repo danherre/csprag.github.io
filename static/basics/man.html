@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - man</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>man</h2>
+<p><code>man</code> provides <em>manual pages</em> for terminal commands</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ man git
+<span class="c1"># displays git man page</span>
+q <span class="c1"># to quit</span>
+</pre></div>
+<p>--</p>
+<h3>Useful Options / Examples</h3>
+<p><code>man -f &lt;command&gt;</code> shows a list of related commands that match the <command> keyword</p>
+<div class="highlight"><pre><span></span>$ man -f git
+perlgit<span class="o">(</span><span class="m">1</span><span class="o">)</span>               - Detailed information about git and the Perl repository
+git<span class="o">(</span><span class="m">1</span><span class="o">)</span>                   - the stupid content tracker
+git-add<span class="o">(</span><span class="m">1</span><span class="o">)</span>               - Add file contents to the index
+git-am<span class="o">(</span><span class="m">1</span><span class="o">)</span>                - Apply a series of patches from a mailbox
+git-annotate<span class="o">(</span><span class="m">1</span><span class="o">)</span>          - Annotate file lines with commit information
+git-apply<span class="o">(</span><span class="m">1</span><span class="o">)</span>             - Apply a patch to files and/or to the index
+git-archimport<span class="o">(</span><span class="m">1</span><span class="o">)</span>        - Import an Arch repository into Git
+git-archive<span class="o">(</span><span class="m">1</span><span class="o">)</span>           - Create an archive of files from a named tree
+git-bisect<span class="o">(</span><span class="m">1</span><span class="o">)</span>            - Use binary search to find the commit that introduced a bug
+...
+</pre></div>
+<h4>Manual sections</h4>
+<p>The numbers in parentheses next to the commands correspond to the manual section they are in:</p>
+<p>The standard sections of the manual include:</p>
+
+<pre><code>1      User Commands
+2      System Calls
+3      C Library Functions
+4      Devices and Special Files
+5      File Formats and Conventions
+6      Games et. al.
+7      Miscellanea
+8      System Administration tools and Daemons
+
+</code></pre>
+<p>e.g. <code>man -f printf</code> lists <code>printf(1)</code>, and <code>printf(3)</code>:</p>
+<div class="highlight"><pre><span></span>$ man <span class="m">1</span> <span class="nb">printf</span>
+<span class="c1"># displays printf (as a command) man page</span>
+q
+$ man <span class="m">3</span> <span class="nb">printf</span>
+<span class="c1"># displays printf (as a stdlib fn) man page</span>
+q
+</pre></div>
+<h4>Sections within a manual page:</h4>
+
+<pre><code>NAME             Name of manual page
+SYNOPSIS         A brief summary of the command or function's interface
+CONFIGURATION    Configuration details for a device [Normally only in Section 4]
+DESCRIPTION      An explanation of what the program, function, or format does
+OPTIONS          [Normally only in Sections 1, 8]
+EXIT STATUS      [Normally only in Sections 1, 8]
+RETURN VALUE     [Normally only in Sections 2, 3]
+ERRORS           [Typically only in Sections 2, 3]
+ENVIRONMENT
+FILES
+VERSIONS         [Normally only in Sections 2, 3]
+ATTRIBUTES       [Normally only in Sections 2, 3]
+CONFORMING TO
+NOTES
+BUGS
+EXAMPLE
+SEE ALSO
+
+</code></pre>
+<h4>Man pages reference</h4>
+<div class="highlight"><pre><span></span>$ man man
+<span class="c1"># displays the man pages for man</span>
+q
+$ man man-pages
+<span class="c1"># displays information of manual sections and descriptions</span>
+q
+</pre></div>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

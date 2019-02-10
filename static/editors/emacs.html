@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - emacs</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>emacs</h2>
+<p><code>emacs</code> is used to edit files in emacs.</p>
+<div class="highlight"><pre><span></span>$ emacs filename
+</pre></div>
+<p>Then file specified by <code>filename</code> will be opened in emacs, and you can use emacs to edit it.</p>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>emacs -nw</code></h4>
+<div class="highlight"><pre><span></span>$ emacs -nw
+</pre></div>
+<p>Open Emacs directly in terminal.</p>
+<h5>Break it down</h5>
+<ul>
+<li><code>-nw</code> means new window.</li>
+<li>You may occasionally want to run Emacs directly in the terminal window.  Use the -nw option for this.</li>
+</ul>
+<h4><code>emacs -q</code></h4>
+<div class="highlight"><pre><span></span>$ emacs -q
+</pre></div>
+<p>Open Emacs and do not load a init file.</p>
+<h5>Break it down</h5>
+<ul>
+<li><code>-q</code> means do not load an init file.</li>
+<li>When Emacs is started, it normally tries to load a Lisp program from an init file.
+This file, if it exists, specifies how to initialize Emacs for you. Emacs looks for
+your init file using the filenames ~/.emacs, ~/.emacs.el, or ~/.emacs.d/init.el. Here,
+~/ stands for your home directory.</li>
+</ul>
+<h4><code>emacs +number file</code></h4>
+<div class="highlight"><pre><span></span>$ emacs +7 filename
+</pre></div>
+<p>Open Emacs and move the cursor to line 7.</p>
+<h5>Break it down</h5>
+<ul>
+<li>Go to the line specified by <code>number</code>.</li>
+<li>Do not insert a space between the "+" sign and the <code>number</code>.</li>
+</ul>
+<h4><code>emacs -font, -fn</code></h4>
+<div class="highlight"><pre><span></span>$ emacs -font <span class="m">12</span>
+</pre></div>
+<div class="highlight"><pre><span></span>$ emacs -fn <span class="m">12</span>
+</pre></div>
+<p>Open Emacs with font size 12.</p>
+<h5>Break it down</h5>
+<ul>
+<li>Set the Emacs window’s font to that specified by font.</li>
+<li>When you specify a font, be sure to put a space between the switch and the font name.</li>
+</ul>
+<h4><code>emacs -geometry</code></h4>
+<div class="highlight"><pre><span></span>$ emacs -geometry 70x24 filename
+</pre></div>
+<p>Open a frame with 70 chars wide and 24 chars high.</p>
+<h5>Break it down</h5>
+<ul>
+<li>Set the Emacs window’s width, height, and position as specified. The width and height are specified
+in characters; the default is 80x24.</li>
+</ul>
+<h4><code>emacs -fg</code></h4>
+<div class="highlight"><pre><span></span>$ emacs -fg red filename
+</pre></div>
+<p>Open Emacs and set the color of the text red.</p>
+<h5>Break it down</h5>
+<ul>
+<li>On color displays, sets the color of the text.
+See the file /usr/lib/X11/rgb.txt for a list of valid color names.</li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

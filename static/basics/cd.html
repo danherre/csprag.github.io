@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - cd</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>cd</h2>
+<p><code>cd</code> is used to <em>change directory</em>. Unlike most commands, <code>cd</code> is not
+a separate program, it is a shell built-in. <code>cd</code> is a useful tool to navigate up and down the hierarchy of the file systems on your machine, and move into a given directory.</p>
+<div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~
+$ <span class="nb">cd</span> /home
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>cd -</code></h4>
+<p>Jump to the last directory that you were in. This will not always necessarily be the parent to your current directory, which would instead be the case if you were to use <code>cd ..</code></p>
+<p>(Note that this command prints current path after completion)</p>
+<div class="highlight"><pre><span></span>Alborz-Brals-MacBook-Pro:basics abral$ <span class="nb">pwd</span>
+/Users/abral/Desktop/Computer_Science/EECS <span class="m">398</span> <span class="o">(</span>C4CS<span class="o">)</span>/adv_HW_7_2/c4cs.github.io/_commands/basics
+Alborz-Brals-MacBook-Pro:basics abral$ <span class="nb">cd</span> /tmp
+Alborz-Brals-MacBook-Pro:tmp abral$ <span class="nb">pwd</span>
+/tmp
+Alborz-Brals-MacBook-Pro:tmp abral$ <span class="nb">cd</span> -
+/Users/abral/Desktop/Computer_Science/EECS <span class="m">398</span> <span class="o">(</span>C4CS<span class="o">)</span>/adv_HW_7_2/c4cs.github.io/_commands/basics
+</pre></div>
+<h4><code>cd ..</code></h4>
+<p>Another way to jump back directory</p>
+<p>The two dot characters <code>..</code> represent the parent directory to the current directory in which we are working</p>
+<div class="highlight"><pre><span></span>Alborz-Brals-MacBook-Pro:basics abral$ <span class="nb">pwd</span>
+/Users/abral/Desktop/Computer_Science/EECS <span class="m">398</span> <span class="o">(</span>C4CS<span class="o">)</span>/adv_HW_7/c4cs.github.io/_commands/basics
+Alborz-Brals-MacBook-Pro:basics abral$ <span class="nb">cd</span> ..
+Alborz-Brals-MacBook-Pro:_commands abral$ <span class="nb">pwd</span>
+/Users/abral/Desktop/Computer_Science/EECS <span class="m">398</span> <span class="o">(</span>C4CS<span class="o">)</span>/adv_HW_7/c4cs.github.io/_commands
+</pre></div>
+<h4><code>cd .</code></h4>
+<p>The one dot character <code>.</code> represents the current directory in which we are working. This command simply moves us to our current directory</p>
+<div class="highlight"><pre><span></span>Alborz-Brals-MacBook-Pro:basics abral$ <span class="nb">pwd</span>
+/Users/abral/Desktop/Computer_Science/EECS <span class="m">398</span> <span class="o">(</span>C4CS<span class="o">)</span>/adv_HW_7/c4cs.github.io/_commands/basics
+Alborz-Brals-MacBook-Pro:basics abral$ <span class="nb">cd</span> .
+Alborz-Brals-MacBook-Pro:basics abral$ <span class="nb">pwd</span>
+/Users/abral/Desktop/Computer_Science/EECS <span class="m">398</span> <span class="o">(</span>C4CS<span class="o">)</span>/adv_HW_7/c4cs.github.io/_commands/basics
+</pre></div>
+<p>Of course, this accomplishes nothing; however, there are other uses for the <code>.</code> character pertaining to the <code>cd</code> command. Some of the more common uses can be found on the <a href="https://c4cs.github.io/commands/dot">dot(.) page of the C4CS website</a></p>
+<h4><code>cd</code></h4>
+<p>Jump back to home directory (same as "cd ~" or "cd /home")</p>
+<div class="highlight"><pre><span></span>Alborz-Brals-MacBook-Pro:basics abral$ <span class="nb">pwd</span>
+/Users/abral/Desktop/Computer_Science/EECS <span class="m">398</span> <span class="o">(</span>C4CS<span class="o">)</span>/adv_HW_7/c4cs.github.io/_commands/basics
+Alborz-Brals-MacBook-Pro:basics abral$ <span class="nb">cd</span>
+Alborz-Brals-MacBook-Pro:~ abral$ <span class="nb">pwd</span>
+/Users/abral
+</pre></div>
+<h4><code>cd /</code></h4>
+<p>Jump to the root directory</p>
+<div class="highlight"><pre><span></span>Alborz-Brals-MacBook-Pro:basics abral$ <span class="nb">pwd</span>
+/Users/abral/Desktop/Computer_Science/EECS <span class="m">398</span> <span class="o">(</span>C4CS<span class="o">)</span>/adv_HW_7/c4cs.github.io/_commands/basics
+Alborz-Brals-MacBook-Pro:basics abral$ <span class="nb">cd</span> /
+Alborz-Brals-MacBook-Pro:/ abral$ <span class="nb">pwd</span>
+/
+</pre></div>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - ffmpeg</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>ffmpeg</h2>
+<p><code>ffmpeg</code> is a multimedia framework used to record, convert, and stream audio and video.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span><span class="c1"># Convert between filetypes</span>
+$ ffmpeg -i input.mp4 output.avi
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<div class="highlight"><pre><span></span>$ ffmpeg -i input.mp4 output.avi
+</pre></div>
+<p>A simple command to convert from one encoding format to another.</p>
+<div class="highlight"><pre><span></span>$ ffmpeg -i input.mp3 output.wav
+</pre></div>
+<p>The same as above, but with audio instead of video.</p>
+<div class="highlight"><pre><span></span>$ ffmpeg -i input.avi -r <span class="m">24</span> output.avi
+</pre></div>
+<p>the <code>-r</code> flag specifies the desired output framerate in fps. This example is converting whatever framerate <code>input.avi</code> is to a 24fps .avi output.</p>
+<div class="highlight"><pre><span></span>$ ffmpeg -i input.mp4 -vf <span class="nv">fps</span><span class="o">=</span><span class="m">1</span>/60 screenshot%d.png
+</pre></div>
+<p>This gets stills of a .mp4 every second and call them <code>screenshot[NUM].png</code>. It stores them in the current directory.</p>
+<div class="highlight"><pre><span></span>$ ffmpeg -f image2 -pattern_type glob -framerate <span class="m">12</span> -i <span class="s1">&#39;still-*.jpeg&#39;</span> -s WxH output.avi
+</pre></div>
+<p>Alternatively, you can turn a bunch of images that you have into a video. Here <code>image2</code> is a required format, a 12 fps video <code>output.avi</code> is being created from all images that follow the file naming pattern <code>still-*.jpeg</code>.</p>
+<div class="highlight"><pre><span></span>$ ffmpeg -i input.mp4 -ss <span class="m">00</span>:00:25 -codec copy -t <span class="m">40</span> output.mp4
+</pre></div>
+<p>This cuts the video file into a clip. The <code>-ss</code> tells it the starting time, here 25 seconds, and the <code>-t</code> tells it how much of the clip you want, so here 40 seconds.</p>
+<p>This can also work to split the whole file into multiple smaller files as shown below.</p>
+<div class="highlight"><pre><span></span>$ ffmpeg -i input.mp4 -t <span class="m">00</span>:00:41 -c copy part1.mp4 -ss <span class="m">00</span>:00:59 -codec copy part2.mp4
+</pre></div>
+<p>In this case <code>-t 00:00:41</code> shows a part that is created from the start of the video to the 41st second of video. <code>-ss 00:00:59</code> shows the starting time stamp for the video. It means that the 2nd part will start from the 59th second and will continue up to the end of the original file.</p>
+<p>You can also join various video/audio files together.</p>
+<div class="highlight"><pre><span></span>$ ffmpeg -f concat -i file-list.txt -c copy output.mp4
+</pre></div>
+<p>where <code>file-list.txt</code> is a list of files <strong>with the same codec</strong> that are to be joined together, eg.</p>
+
+<pre><code>file '/Users/USER_NAME/Documents/movie_parts/part1.mp4'
+file '/Users/USER_NAME/Documents/movie_parts/part2.mp4'
+file '/Users/USER_NAME/Documents/movie_parts/part3.mp4'
+file '/Users/USER_NAME/Documents/movie_parts/part4.mp4'</code></pre>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

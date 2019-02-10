@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - mkdir</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>mkdir</h2>
+<p><code>mkdir</code> is used to create directories (if they do not already exist) on a file system.</p>
+<p>The general format is</p>
+<div class="highlight"><pre><span></span>$ mkdir <span class="o">[</span>options<span class="o">]</span> directories
+</pre></div>
+<hr>
+<p>A simple example is:</p>
+<div class="highlight"><pre><span></span>$ mkdir dir1
+</pre></div>
+<p>This will create a folder named <strong>dir1</strong> under the current path.</p>
+<h3>Useful Options / Examples</h3>
+<h4><code>mkdir -p,--parents</code></h4>
+<p>Create parent directories as necessary. (If the sepcified parent directory already exist, no error is reported.)</p>
+<p>This is helpful when we are creating nested directories. For example, when we do</p>
+<div class="highlight"><pre><span></span>$ mkdir -p /home/a/b/c
+</pre></div>
+<p>if <strong>/home/a/b/</strong> does not exist, <strong>mkdir</strong> will first create it, and then create <strong>/c</strong> under it. But if we are not using the <strong>-p</strong> flag, it will report an error saying <strong>/home/a/b/</strong> does not exist.</p>
+<p>Also, if we are creating a directory that is already exist, without the <strong>-p</strong> flag, there will be an error saying " File exists"; while adding the <strong>-p</strong> flag will not report an error. For example,</p>
+<div class="highlight"><pre><span></span>$ mkdir /a/d
+$ mkdir /a/d
+mkdir: cannot create directory ‘/a/d’: File exists
+$ mkdir -p /a/d
+</pre></div>
+<h4><code>mkdir -m, --mode=</code><em><code>MODE</code></em></h4>
+<p>Set file access mode (as with the <strong>chmod</strong> command).</p>
+<p>For example,</p>
+<div class="highlight"><pre><span></span>$ mkdir -m <span class="m">444</span> dir1
+</pre></div>
+<p>will create folder <strong>dir1</strong> which is read only for all users.</p>
+<p>More usage about file access mode code can be found <a href="https://help.ubuntu.com/community/FilePermissions#Changing_Permissions">here</a>.</p>
+<h4><code>mkdir -v, --verbose</code></h4>
+<p>Verbose output; print a message for each created directory.</p>
+<p>For example, if we do</p>
+<div class="highlight"><pre><span></span>$ mkdir -v -p -m <span class="m">444</span> a/b/c
+</pre></div>
+<p>where <strong>a</strong> exists, but <strong>a/b</strong> does not, it will print</p>
+<div class="highlight"><pre><span></span>mkdir: created directory <span class="sb">`</span>a/b<span class="s1">&#39;</span>
+<span class="s1">mkdir: created directory `a/b/c&#39;</span>
+</pre></div>
+<p>(Yes, it will just print the directory name, but not the file access mode.)</p>
+<h4>Creating Multiple and Nested directories in one line</h4>
+<p>This is not done by <strong>mkdir</strong> itself. Instead, it can be done through making use of the Shell extension.</p>
+<p>For example,</p>
+<div class="highlight"><pre><span></span>$ mkdir -p a/<span class="o">{</span>b1/c1/<span class="o">{</span>d1,d2<span class="o">}</span>,b2,b3<span class="o">}</span>
+</pre></div>
+<p>will create a tree like this</p>
+<div class="highlight"><pre><span></span>a
+│   b2
+│   b3
+└───b1
+    └─── c1
+         │   d1
+         │   d2
+</pre></div>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

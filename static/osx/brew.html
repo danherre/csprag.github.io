@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - brew</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>brew</h2>
+<p><code>brew</code>, or known by its longer name as Homebrew, bills itself as the "missing package manager for OS X".</p>
+<div class="highlight"><pre><span></span>$ brew install <span class="nv">rsync</span>
+<span class="o">==</span>&gt; Installing rsync from homebrew/dupes
+<span class="o">==</span>&gt; Downloading https://homebrew.bintray.com/bottles-dupes/rsync-3.1.2.el_capitan.bottle.tar.gz
+<span class="c1">######################################################################## 100.0%</span>
+<span class="o">==</span>&gt; Pouring rsync-3.1.2.el_capitan.bottle.tar.gz
+🍺  /usr/local/Cellar/rsync/3.1.2: <span class="m">8</span> files, <span class="m">748</span>.2K
+</pre></div>
+<hr>
+<p>That's right - <code>brew</code> uses emojis as part of its standard output 🙌</p>
+<p>Various Linux distributions include package managers for installing software out of the box (e.g. <code>apt-get</code> for Ubuntu), and <code>brew</code> is a third-party effort to replicate the same for OS X. As an example of <code>brew</code> usage, above is an example of installing <a href="https://en.wikipedia.org/wiki/Rsync">rsync</a>.</p>
+<p>To install <code>brew</code>, the <a href="https://brew.sh">official Homebrew website</a> directs you to run this command, which incidentally explains itself as it runs:</p>
+<div class="highlight"><pre><span></span>/usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+<h3>Useful Options / Examples</h3>
+<h4><code>brew install [package-name]</code></h4>
+<div class="highlight"><pre><span></span>$ brew install <span class="nv">rsync</span>
+<span class="o">==</span>&gt; Installing rsync from homebrew/dupes
+<span class="o">==</span>&gt; Downloading https://homebrew.bintray.com/bottles-dupes/rsync-3.1.2.el_capitan.bottle.tar.gz
+<span class="c1">######################################################################## 100.0%</span>
+<span class="o">==</span>&gt; Pouring rsync-3.1.2.el_capitan.bottle.tar.gz
+🍺  /usr/local/Cellar/rsync/3.1.2: <span class="m">8</span> files, <span class="m">748</span>.2K
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>The <code>brew install [package-name]</code> command is the command for installing various <code>brew</code> packages. </li>
+<li>There is a <a href="https://github.com/Homebrew/homebrew-core/tree/master/Formula">public list</a> of available packages that <code>brew</code> pulls from. Each package has a "formula", or package definition, that <code>brew</code> can parse. </li>
+<li>Upon picking a formula, like <code>node</code>, <code>wget</code>, or <code>cowsay</code>, <code>brew</code> retrieves the formula and follows the instructions (e.g. downloading the appropriate files) to install that package.</li>
+</ul>
+<h4><code>brew remove [package-name]</code></h4>
+<div class="highlight"><pre><span></span>$ brew remove rsync
+Uninstalling /usr/local/Cellar/rsync/3.1.2... <span class="o">(</span><span class="m">8</span> files, <span class="m">748</span>.2K<span class="o">)</span>
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>The <code>brew remove</code> command is the command for uninstalling various <code>brew</code> packages, given the name of a package, using the package's formula.</li>
+</ul>
+<h4><code>brew update</code></h4>
+<div class="highlight"><pre><span></span>$ brew update
+Updated Homebrew from 86fc508 to 5531fd9.
+Updated <span class="m">1</span> tap <span class="o">(</span>homebrew/dupes<span class="o">)</span>.
+<span class="o">==</span>&gt; New Formulae
+...
+<span class="o">==</span>&gt; Updated Formulae
+...
+<span class="o">==</span>&gt; Deleted Formulae
+...
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li><code>brew update</code> updates <code>brew</code> to the latest version, directly from <code>brew</code>'s <a href="https://github.com/Homebrew/homebrew">GitHub repository</a>. </li>
+<li>This includes refreshing <code>brew</code>'s "taps", which are essentially lists of formulae that your installation of <code>brew</code> can see. Above, you can see that I have one tap - <code>homebrew/dupes</code>, which has duplicates of useful Linux-y tools like <code>rsync</code>, <code>screen</code>, and <code>less</code>.</li>
+</ul>
+<h4><code>brew upgrade</code></h4>
+<div class="highlight"><pre><span></span>$ brew <span class="nv">upgrade</span>
+<span class="o">==</span>&gt; Upgrading <span class="m">2</span> outdated packages, with result:
+boost <span class="m">1</span>.60.0_1, coreutils <span class="m">8</span>.25
+<span class="o">==</span>&gt; Upgrading <span class="nv">boost</span>
+<span class="o">==</span>&gt; Downloading https://homebrew.bintray.com/bottles/boost-1.60.0_1.el_capitan.bottle.tar.gz
+<span class="c1">######################################################################## 100.0%</span>
+<span class="o">==</span>&gt; Pouring boost-1.60.0_1.el_capitan.bottle.tar.gz
+🍺  /usr/local/Cellar/boost/1.60.0_1: <span class="m">11</span>,139 files, <span class="m">436</span>.0M
+<span class="o">==</span>&gt; Upgrading <span class="nv">coreutils</span>
+<span class="o">==</span>&gt; Downloading https://homebrew.bintray.com/bottles/coreutils-8.25.el_capitan.bottle.tar.gz
+<span class="c1">######################################################################## 100.0%</span>
+<span class="o">==</span>&gt; Pouring coreutils-8.25.el_capitan.bottle.tar.gz
+<span class="o">==</span>&gt; Summary
+🍺  /usr/local/Cellar/coreutils/8.25: <span class="m">216</span> files, <span class="m">8</span>.3M
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li><code>brew upgrade</code> upgrades all of ones' packages to the latest releases.</li>
+</ul>
+<h4><code>brew list</code></h4>
+<div class="highlight"><pre><span></span>$ brew list
+autoconf    cowsay      gdbm        libtool     openssl     rbenv       sqlite
+automake    dfu-util    gettext     libusb      pkg-config  readline    tmux
+boost       fortune     gnu-getopt  mongodb     postgresql  ruby-build  valgrind
+coreutils   gdb         libevent    node        python      scons       xz
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li><code>brew list</code> lists all of the <code>brew</code> packages that one has installed. For instance, you can see that I've installed <code>mongodb</code>, <code>node</code>, and <code>python</code>, among others.</li>
+</ul>
+<h4><code>brew search [text]</code></h4>
+<div class="highlight"><pre><span></span>$ brew search wget
+wget                        wgetpaste
+</pre></div>
+<div class="highlight"><pre><span></span>$ brew search /*get*/
+gengetopt        gnu-getopt ✔     languagetool     libgetdata       vegeta           wgetpaste        wxwidgets      
+Caskroom/cask/igetter                   Caskroom/cask/join-together             Caskroom/cask/pwnagetool
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li><code>brew search [text]</code> or <code>brew search [/text/]</code> takes the input <code>text</code>, and tries to match it against all the packages it can find, including looking other popular taps.</li>
+<li>It also accepts regular expressions wrapped in <code>/</code>, like the second example <code>/*get*/</code> above.</li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

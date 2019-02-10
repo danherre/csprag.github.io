@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - du</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>du</h2>
+<p><code>du</code>, or <em>disk usage</em>, reports the sizes of directories, including of all of their contents and the sizes of individual files, and the sizes of each directory in the directory tree.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ du <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>directories and/or files<span class="o">]</span>
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>du</code></h4>
+<div class="highlight"><pre><span></span>$ du
+<span class="m">236</span> ./hw1
+<span class="m">375</span> ./hw2
+<span class="m">1794</span> .
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>This is the simplest usage of <code>du</code>. It prints out the size of your current working directory and the size of all the directories inside of your current directory in KB. This example assumes you're in your <code>home/eecs398</code> directory, which contains the subdirectories <code>hw1/</code> and <code>hw2/</code>, both of which only contain files.</li>
+</ul>
+<h4><code>du [directory or file]</code></h4>
+<div class="highlight"><pre><span></span>$ du home/eecs398/hw1
+<span class="m">236</span> ./_hw1
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>This prints out the size of your <code>home/eecs398/hw1</code> directory. If this directory contained any subdirectories, it would print out the size of those subdirectories as well.</li>
+</ul>
+<h4><code>du -h</code></h4>
+<div class="highlight"><pre><span></span>$ du -h
+236K ./hw1
+375K ./hw2
+<span class="m">1</span>.7M .
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>This prints out directory sizes in human-readable form, so instead of printing out only KB for each directory, it prints out the number of B, MB, KB, or GB depending on the size of each directory.</li>
+</ul>
+<h4><code>du -sh</code></h4>
+<div class="highlight"><pre><span></span>$ du -sh
+<span class="m">1</span>.7M .
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>This tells du to <em>only</em> print out the size of your current working directory (instead of printing out the size of all of your current working directories <em>and</em> the sizes of all of its subdirectories).</li>
+</ul>
+<h4><code>du -a</code></h4>
+<div class="highlight"><pre><span></span>$ du -a
+106K ./hw1/hw1.tex
+130K ./hw1/hw1.pdf
+236K ./hw1
+75K  ./hw2/hw2.tex
+300K ./hw2/hw2.pdf
+375K ./hw2
+400K ./README.pdf
+<span class="m">1</span>.7M .
+</pre></div>
+<h5>Break it down</h5>
+<ul>
+<li>This tells du to also print out the sizes of every individual file in your current working directory and all of its subdirectories.</li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

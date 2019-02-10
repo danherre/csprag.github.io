@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - grep</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>grep</h2>
+<p><code>grep</code> is a program for searching text files for lines that match regular exprssions. It can be used for all sorts of pattern-matching and text-based query analysis.</p>
+<div class="highlight"><pre><span></span>$ grep -i crab animals.txt
+Crab
+Crab-Eating Macaque
+Hermit Crab
+Horseshoe Crab
+King Crab
+</pre></div>
+<hr>
+<p>This reference page uses the <a href="../static/commands/src/animals.txt">animals.txt</a> file for all of its examples. This list was taken from <a href="https://a-z-animals.com/animals/">Millie Bond's A-Z Index of Animals</a>.</p>
+<p>Below are a sample of possible patterns you can match using <code>grep</code>:</p>
+<div class="highlight"><pre><span></span>$ grep Wolf animals.txt             // list all animals containig <span class="s2">&quot;Wolf&quot;</span>
+Arctic Wolf
+Irish WolfHound
+Red Wolf
+Wolf
+Wolf Spider
+$ grep ^Wolf animals.txt            // list all animals beginning with <span class="s2">&quot;Wolf&quot;</span>
+Wolf
+Wolf Spider
+$ grep Wolf$ animals.txt            // list all animals ending with <span class="s2">&quot;Wolf&quot;</span>
+Arctic Wolf
+Red Wolf
+Wolf
+</pre></div>
+<p>By default, <code>grep</code> will print all the matching lines to standard output (the console) in the same order they appear in the source with the matching parts colored. This behavior can be modified by using one or more of the the command line options <code>grep</code> offers.</p>
+<h3>Useful Options / Examples</h3>
+<h4>-c, -&#45;count</h4>
+<h5>Using the <code>-c</code> or <code>--count</code> option overrides the default output behavior of <code>grep</code>. Instead of printing all of the matches to the console, it will print the number of lines that match. This is a useful option if, for example, you only want to know if there are any matches (count &gt; 0) but aren't as concerned with what those matches actually are.</h5>
+<div class="highlight"><pre><span></span>$ grep -c ^B animals.txt            // count the number of animals beginning with <span class="s2">&quot;B&quot;</span>
+<span class="m">66</span>
+$ grep -c <span class="o">[</span>Ll<span class="o">]</span>l animals.txt         // count the number of animals containing <span class="s2">&quot;ll&quot;</span> or <span class="s2">&quot;Ll&quot;</span>
+<span class="m">46</span>
+$ grep -c end$ animals.txt          // count the number of animals ending with <span class="s2">&quot;end&quot;</span>
+<span class="m">0</span>
+</pre></div>
+<h4>-v, -&#45;invert-match</h4>
+<h5>Regular expressions can be tricky to use, especially when you want to find text that doesn't match a particular regex. This is made easier by the <code>-v</code> or <code>--invert-match</code> option, which finds lines in the target input that do not match the given regular expression.</h5>
+<div class="highlight"><pre><span></span>$ grep -v ^<span class="o">[</span>AEIOU<span class="o">]</span> animals.txt    // list all animals that don<span class="s1">&#39;t start with a vowel</span>
+<span class="s1">Baboon</span>
+<span class="s1">Bactrian Camel</span>
+<span class="s1">Badger</span>
+<span class="s1">...</span>
+<span class="s1">Zebu</span>
+<span class="s1">Zonkey</span>
+<span class="s1">Zorse</span>
+<span class="s1">$ grep -c -v s animals.txt        // count all animals that don&#39;</span>t contain an <span class="s2">&quot;s&quot;</span>
+<span class="m">427</span>
+</pre></div>
+<h4>-i, -&#45;ignore-case</h4>
+<h5>Regular expressions, by their nature, are case sensitive. Sometimes, it can be annoying to construct a regex that inherently ignores case differences between letters; this can be especially true when working with extended ASCII or Unicode characters. The <code>-i</code> or <code>--ignore-case</code> option handles this automatically.</h5>
+<div class="highlight"><pre><span></span>$ grep -i m<span class="o">[</span>aeiou<span class="o">]</span>n animals.txt        // list all animals that contain <span class="s2">&quot;m&quot;</span> or <span class="s2">&quot;M&quot;</span>, <span class="k">then</span> a vowel, <span class="k">then</span> <span class="s2">&quot;n&quot;</span> or <span class="s2">&quot;N&quot;</span>
+Birman
+Caiman
+...
+Mongoose
+Mongrel
+Monitor Lizard
+...
+Tiger Salamander
+Vervet Monkey
+Woolly Monkey
+</pre></div>
+<h4>Other Useful Options</h4>
+<h5><code>-n</code>, <code>--line-number</code> will list the line number of the matching line before the contents</h5>
+<p><code>-l</code>, <code>--files-with-matches</code> will list the input files that contain a matching line, not the matching lines themselves</p>
+<h3>Input/Output</h3>
+<h5><code>grep</code> can be used with one file or with multiple files by listing more than one in the input position for the command. You can even use regular expressions to match multiple files!</h5>
+<div class="highlight"><pre><span></span>$ grep <span class="s2">&quot;umich&quot;</span> file1.txt file2.txt       // search two files explicitly
+// output here
+$ grep <span class="s2">&quot;umich&quot;</span> *.txt                     // search all .txt files in the current directory
+// output here
+$ grep <span class="s2">&quot;umich&quot;</span> .                         // search all files in the current directory
+</pre></div>
+<p>Input can also be piped into <code>grep</code> from another program or redirected using &lt;. Likewise, the output of <code>grep</code> can be piped into another program (including another <code>grep</code>) or redirected using &gt;</p>
+<h3>Regular Expression Basics</h3>
+<h5>Here are some useful symbols and techniques for regular expressions. This is just a very basic overview; regular expressions are extremely powerful if you know how to wield them.</h5>
+<ul>
+<li><code>^</code> matches the beginning of a line<ul>
+<li><code>^A</code> will match all lines beginning with a capital "A"</li>
+</ul>
+</li>
+<li><code>$</code> matches the end of a line<ul>
+<li><code>e$</code> will match all lines ending with a lower-case "e"</li>
+</ul>
+</li>
+<li><code>.</code> matches any single character (including whitespace)<ul>
+<li><code>b.b</code> will match all lines that contain two lower-case "b"s separated by a single character (i.e. "bob" or "b&amp;b")</li>
+<li><code>^...$</code> will match all lines that are exactly three characters long</li>
+</ul>
+</li>
+<li><code>*</code> will match the preceding character zero or more times<ul>
+<li><code>a*b</code> will match all lines that contain any number of lower-case "a"s (including 0) followed by a lower-case "b"</li>
+<li><code>blue.*green</code> will match all lines that contain "blue" followed at some point later (maybe immediately) by "green"</li>
+</ul>
+</li>
+<li><code>+</code> will match the preceding character one or more times<ul>
+<li><code>a+b</code> will match all lines that contain at least one (but possibly more) lower-case "a" immediately followed by a lower-case "b"</li>
+<li><code>blue.+green</code> will match all lines that contain "blue" followed later by "green" with at least one character in between</li>
+</ul>
+</li>
+<li><code>\w</code> will match any letter, digit, or the underscore</li>
+<li><code>\d</code> will match any digit</li>
+<li><code>\s</code> will match any whitespace (space, tab, newline, etc.)</li>
+<li>To match any of a group of characters, place them in <code>[]</code><ul>
+<li><code>[aeiou]$</code> will match all lines that end in a vowel</li>
+</ul>
+</li>
+<li>To match any of a range of characters, place them in <code>[]</code> separated by a <code>-</code><ul>
+<li><code>^[1-9][0-9]$</code> will match all lines that are numbers between 10 and 99 inclusive</li>
+<li><code>^[A-Z][a-z]+$</code> will match all lines that start with a capital followed by at leaste on lower-case letter, and only contains letters</li>
+</ul>
+</li>
+</ul>
+<h5>Here are some good resources if you want to learn more about regular expressions or get practice:</h5>
+<ul>
+<li><a href="http://www.regular-expressions.info/">Regular-Expressions.info</a></li>
+<li><a href="https://www.w3schools.com/jsref/jsref_obj_regexp.asp">W3Schools (for JavaScript specifically, but has a good general syntax reference)</a></li>
+<li><a href="https://alf.nu/RegexGolf">RegEx Golf</a></li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - seq</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>seq</h2>
+<p><code>seq</code> is used to produce a sequence of numbers
+<!-- one line explanation would go here --></p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ seq <span class="m">3</span>
+<span class="m">1</span>
+<span class="m">2</span>
+<span class="m">3</span>
+</pre></div>
+<hr>
+<h3>Useful Options / Examples</h3>
+<h4><code>seq -s [SEPERATOR]</code></h4>
+<div class="highlight"><pre><span></span>$ seq -s <span class="s2">&quot; &quot;</span> <span class="m">3</span>
+<span class="m">1</span> <span class="m">2</span> <span class="m">3</span>
+$ seq -s <span class="s2">&quot; | &quot;</span> <span class="m">3</span>
+<span class="m">1</span> <span class="p">|</span> <span class="m">2</span> <span class="p">|</span> <span class="m">3</span>
+</pre></div>
+<ul>
+<li><code>-s</code> is the seperator between the numbers. For the default the seperator is equal to '\n', the end of line character. Takes in a string value.</li>
+</ul>
+<h4><code>seq -f [FORMAT]</code></h4>
+<div class="highlight"><pre><span></span>$ seq -f <span class="s2">&quot;01/%02g/2016&quot;</span> <span class="m">3</span>
+<span class="m">01</span>/01/2016
+<span class="m">01</span>/02/2016
+<span class="m">01</span>/02/2016
+</pre></div>
+<ul>
+<li><code>-f</code> Sets a format for the sequence. In this case, a date like format was chosen.</li>
+</ul>
+<h4><code>seq [FIRST] [LAST]</code></h4>
+<div class="highlight"><pre><span></span>$ seq <span class="m">5</span> <span class="m">10</span>
+<span class="m">5</span>
+<span class="m">6</span>
+<span class="m">7</span>
+<span class="m">8</span>
+<span class="m">9</span>
+<span class="m">10</span>
+</pre></div>
+<ul>
+<li>Putting in two number arguments prints a list of numbers starting from the 
+first number to the second number</li>
+</ul>
+<h4><code>seq [FIRST] [INCREMENT] [LAST]</code></h4>
+<div class="highlight"><pre><span></span>$ seq <span class="m">2</span> <span class="m">2</span> <span class="m">10</span>
+<span class="m">2</span>
+<span class="m">4</span>
+<span class="m">6</span>
+<span class="m">8</span>
+<span class="m">10</span>
+</pre></div>
+<ul>
+<li>The <code>FIRST</code> argument is where the sequence will start. </li>
+<li>The <code>INCREMENT</code> argument determines how the sequence increments by.</li>
+<li>The <code>LAST</code> argument is where the sequence will end.</li>
+</ul>
+<h4>Bash Script</h4>
+<h5>Input</h5>
+<div class="highlight"><pre><span></span>&gt; <span class="k">for</span> i in <span class="k">$(</span>seq <span class="m">3</span><span class="k">)</span>
+&gt; <span class="k">do</span>
+&gt;   <span class="nb">echo</span> <span class="s2">&quot;i is now </span><span class="nv">$i</span><span class="s2">&quot;</span>
+&gt; <span class="k">done</span>
+</pre></div>
+<h5>Output</h5>
+<div class="highlight"><pre><span></span>i is now <span class="m">1</span>
+i is now <span class="m">2</span>
+i is now <span class="m">3</span>
+</pre></div>
+<ul>
+<li>In a for loop <code>seq</code> can be used to increment the incrementer value.</li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>

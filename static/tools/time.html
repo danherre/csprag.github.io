@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <title>EECS 201 - time</title>
+    <!-- Bootstrap 4 JS and CSS -->
+<!-- style sheets and crap -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+    crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/csprag.github.io/static/css/class.css">
+<!-- pygment stylesheets from here: https://github.com/richleland/pygments-css -->
+<link rel="stylesheet" href="/csprag.github.io/static/css/pygments/pastie.css">
+    
+</head>
+
+<body>
+    
+    <!-- Main Navbar -->
+<nav class="navbar navbar-main sticky-top navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="https://csprag.herokuapp.com/">
+                EECS 201
+            </a>
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/" class="nav-link m-2 menu-item">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/schedule" class="nav-link m-2 menu-item">Schedule</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/grading" class="nav-link m-2 menu-item">Attendance/Grading/HW</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/" class="nav-link m-2 menu-item">Reference</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://csprag.herokuapp.com/contribute" class="nav-link m-2 menu-item">Contribute</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    
+
+    <div id="content" class="container">
+        
+
+<div id="command-page">
+    <br />
+    <h2>time</h2>
+<!-- one line explanation would go here -->
+
+
+<p><code>time</code> outputs the runtime of a program that is given as an argument.</p>
+<p><!-- minimal example --></p>
+<div class="highlight"><pre><span></span>$ <span class="nb">time</span> <span class="nb">cd</span>
+
+real    0m0.008s
+user    0m0.008s
+sys     0m0.000s
+</pre></div>
+<hr>
+<p><strong>real:</strong> refers to the amount of time spent in the user program called.</p>
+<p><strong>user:</strong> refers to the amount of time spent in the process called.</p>
+<p><strong>sys:</strong> refers to the amount of time spent in the kernel during the call.</p>
+<h3>Useful Options / Examples</h3>
+<p>There are two <code>time</code> commands available to most terminals. There is the <code>time</code> that is a shell built-in command and there is a <code>time</code> that is a command similar to <code>ls</code>. You must specify the path to the non shell built-in command because otherwise the built-in <code>time</code> command takes precedence. They work identically when called with no arguments, but you can call the non-built-in time command with some additional flags that offer more functionality. The below examples use the <code>/usr/bin/time</code> command (the non built-in command).</p>
+<h4>Example command</h4>
+<h5><code>time -o [FILE] [COMMAND]</code></h5>
+<p><code>time -o</code> can be used to put the output of time into a file. This method includes extra information that is not part of the default time. It has cpu usage, inputs and outputs statisics as well. Another thing to note is that the -o command can only be used when using the absolute path of the time command on some installs. Be careful as this command overwrites the contents of FILE.</p>
+<div class="highlight"><pre><span></span>$ /usr/bin/time -o myfile.txt sleep <span class="m">4</span>
+
+myfile.txt:
+    <span class="m">0</span>.00user <span class="m">0</span>.00system <span class="m">0</span>:04.00elapsed <span class="m">0</span>%CPU <span class="o">(</span>0avgtext+0avgdata 1788maxresident<span class="o">)</span>k
+    0inputs+0outputs <span class="o">(</span>0major+74minor<span class="o">)</span>pagefaults 0swaps
+</pre></div>
+<h4>Example command</h4>
+<h5><code>time -o [FILE] -a [COMMAND]</code></h5>
+<p><code>time -o -a</code> allows you to append the same information as time -o into a file instead of overwriting it.</p>
+<div class="highlight"><pre><span></span>$ /usr/bin/time -o myfile.txt -a sleep <span class="m">8</span>
+
+myfile.txt:
+    <span class="m">0</span>.00user <span class="m">0</span>.00system <span class="m">0</span>:00.04elapsed <span class="m">0</span>%CPU <span class="o">(</span>0avgtext+0avgdata 2056maxresident<span class="o">)</span>k
+    0inputs+0outputs <span class="o">(</span>0major+82minor<span class="o">)</span>pagefaults 0swaps
+    <span class="m">0</span>.00user <span class="m">0</span>.00system <span class="m">0</span>:08.00elapsed <span class="m">0</span>%CPU <span class="o">(</span>0avgtext+0avgdata 1848maxresident<span class="o">)</span>k
+    0inputs+0outputs <span class="o">(</span>0major+74minor<span class="o">)</span>pagefaults 0swaps
+</pre></div>
+
+</div>
+
+
+    </div>
+
+    
+    <nav class="navbar sticky-bottom navbar-light bg-light">
+    <div class="container">
+        <!-- <a href="https://www.youtube.com/watch?v=KlLMlJ2tDkg" target="_blank">w0w</a> -->
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block">
+                <!-- hidden spacer to center brand on mobile --></span>
+            <small>
+                <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License"
+                        style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br /><span
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Computer Science Pragmatics</span>
+                by <a xmlns:cc="http://creativecommons.org/ns#" href="http://patpannuto.com" property="cc:attributionName"
+                    rel="cc:attributionURL">Pat Pannuto</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative
+                    Commons Attribution 4.0 International License</a>.
+            </small>
+        </div>
+        <div class="flex-grow-1 text-right">
+            <p class="text-muted">
+                &copy; 2019 <a href="http://patpannuto.com">Pat Pannuto</a>
+            </p>
+        </div>
+    </div>
+</nav>
+    
+</body>
+
+</html>
