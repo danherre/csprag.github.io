@@ -4,12 +4,14 @@ python: "3.7"
 install:
   python setup.py develop
 script:
-  python freeze.py
-  ls static
+  - python freeze.py
+  - mkdir build
+  - mv index.html static build
 deploy:
   provider: pages
+  local-dir: build
   skip-cleanup: true
   github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
   keep-history: false
   on:
-    branch: master
+    branch: gh-pages
