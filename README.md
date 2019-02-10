@@ -1,6 +1,6 @@
 # Computer Science Pragmatics
 
-[![Build Status](https://travis-ci.org/c4cs/c4cs.github.io.svg?branch=master)](https://travis-ci.org/c4cs/c4cs.github.io)
+[![Build Status](https://travis-ci.org/csprag/csprag.github.io.svg?branch=master)](https://travis-ci.org/csprag/csprag.github.io)
 
 This repository holds the sources for the course homepage for Computing for Computer Scientists,
 a course for early-career EECS students at the University of Michigan.
